@@ -28,6 +28,20 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/counter/del/{id}', [\App\Http\Controllers\CounterController::class, 'delete']);
     Route::get('/counter/edit/{id}', [\App\Http\Controllers\CounterController::class, 'edit']);
     Route::post('/counter/update/{id}', [\App\Http\Controllers\CounterController::class, 'update']);
+
+
+    //event
+    Route::get('/event', [\App\Http\Controllers\EventController::class, 'event']);
+    Route::post('/add/event', [\App\Http\Controllers\EventController::class, 'addEvent']);
+    Route::get('event/del/{id}', [\App\Http\Controllers\EventController::class, 'delEvent']);
+    Route::post('/update/event/{id}', [\App\Http\Controllers\EventController::class, 'updateEvent']);
+
+
+    Route::get('/seats/{id}', [\App\Http\Controllers\SeatController::class, 'seat']);
+    Route::post('/add/seat/{id}', [\App\Http\Controllers\SeatController::class, 'addSeat']);
+    Route::get('seat/del/{id}', [\App\Http\Controllers\SeatController::class, 'delSeat']);
+    Route::post('/update/seat/{id}', [\App\Http\Controllers\SeatController::class, 'updateSeat']);
+
 });
 
 Auth::routes();

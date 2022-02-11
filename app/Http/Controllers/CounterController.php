@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -73,6 +74,10 @@ return view('dashboard.counter.edit',compact('counter'));
         return back()->with('success','Counter updated successfully');
 
     }
+
+
+
+
 
 
 

@@ -35,7 +35,7 @@
                 {{--                    <a class="nav-link" href="#">REGISTER</a>--}}
                 {{--                </li>--}}
 
-                </li>
+{{--                </li>--}}
 
             </ul>
 

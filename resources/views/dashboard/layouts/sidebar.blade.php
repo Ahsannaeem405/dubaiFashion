@@ -17,11 +17,11 @@
 
             <li class=" @yield('dashboard') " ><a href="{{url('admin/dashboard')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
-
                     <li class="@yield('counter')"><a href="{{url('admin/counter')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard">Counters</span></a>
+            </li>
 
-
-
+            </li>
+            <li class="@yield('event')"><a href="{{url('admin/event')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard">Events</span></a>
             </li>
 
 
