@@ -59,8 +59,18 @@
                             </div>
 
                             <div class="col-lg-12 mt-2">
-                                <lable class="label">Event start date time</lable>
-                                <input type="datetime-local" class="form-control" name="start" required>
+                                <lable class="label">Event start date</lable>
+                                <input type="date" class="form-control" name="start" required>
+                            </div>
+
+                            <div class="col-lg-12 mt-2">
+                                <lable class="label">Event start time</lable>
+                                <input type="time" class="form-control" name="starttime" required>
+                            </div>
+
+                            <div class="col-lg-12 mt-2">
+                                <lable class="label">Event end time</lable>
+                                <input type="time" class="form-control" name="endtime" required>
                             </div>
 
                             <div class="col-lg-12 mt-2">
@@ -101,9 +111,9 @@
                                                 <th>#</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Start date & Time</th>
+                                                <th>Event date</th>
+                                                <th>Event Time</th>
                                                 <th>Description</th>
-                                                <th>Created Date</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -116,8 +126,9 @@
                                                     <td><img src="{{asset('uploads/appsetting/'.$event->image.'')}}" alt="image" style="width: 100px;height: 100px"></td>
                                                     <td>{{$event->name}}</td>
                                                     <td>{{$event->start}}</td>
+                                                    <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>
                                                     <td>{{$event->desc}}</td>
-                                                    <td>{{$event->created_at}}</td>
+
                                                     <td>
                                                         <a href="{{url("admin/seats/$event->id")}}">
                                                             <i style="color: skyblue;font-size: 20px" class="fa fa-chain p-1"></i></a>
@@ -157,8 +168,19 @@
                                                                         </div>
 
                                                                         <div class="col-lg-12 mt-2">
-                                                                            <lable class="label">Event start date time</lable>
-                                                                            <input type="datetime-local" class="form-control" value="{{str_replace(' ','T',$event->start)}}" name="start" required>
+                                                                            <lable class="label">Event start date</lable>
+                                                                            <input type="date" class="form-control" value="{{$event->start}}" name="start" required>
+                                                                        </div>
+
+                                                                        <div class="col-lg-12 mt-2">
+                                                                            <lable class="label">Event start time</lable>
+                                                                            <input type="time" class="form-control" value="{{$event->starttime}}" name="starttime" required>
+                                                                        </div>
+
+
+                                                                        <div class="col-lg-12 mt-2">
+                                                                            <lable class="label">Event end time</lable>
+                                                                            <input type="time" class="form-control" value="{{$event->endtime}}" name="endtime" required>
                                                                         </div>
 
                                                                         <div class="col-lg-12 mt-2">

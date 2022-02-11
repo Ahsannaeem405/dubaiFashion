@@ -32,6 +32,8 @@ class EventController extends Controller
 
         }
         $event->start=$request->start;
+        $event->starttime=$request->starttime;
+        $event->endtime=$request->endtime;
 
         $event->save();
         return back()->with('success','Event save successfully');
@@ -67,6 +69,8 @@ class EventController extends Controller
 
         }
         $event->start=$request->start;
+        $event->starttime=$request->starttime;
+        $event->endtime=$request->endtime;
 
         $event->save();
         return back()->with('success','Event updated successfully');

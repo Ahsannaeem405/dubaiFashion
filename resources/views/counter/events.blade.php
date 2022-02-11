@@ -8,8 +8,8 @@
                 <div class="group-card event1_div mx-0 mx-sm-0">
                     <div class="group-card-img">
                         <img src="{{asset('image/6.jpg')}}" />
-                        <a class="rejis-btn event" event="1" status="0">
-                            Join Now
+                        <a href="{{url('counter/scan')}}" class="rejis-btn event" event="1" status="0">
+                            Verify Now
                         </a>
                     </div>
 
@@ -35,7 +35,7 @@
                     <div class="group-card-img">
                         <img src="{{asset('image/6.jpg')}}" />
                         <a class="event rejis-btn" event="2" status="0">
-                            Join Now
+                            Verify Now
                         </a>
                     </div>
 
@@ -63,7 +63,7 @@
                         <img src="{{asset('image/6.jpg')}}" />
 
                         <a class="rejis-btn event" event="3" status="0">
-                            Join Now
+                            Verify Now
                         </a>
                     </div>
 
@@ -84,9 +84,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 text-center my-5">
-                <button class="btn btn-primary " style="width: 120px;height: 70px">SUBMIT</button>
-            </div>
+
+
         </div>
     </div>
 
@@ -99,67 +98,67 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(".event").click(function() {
-            var event = $(this).attr("event");
-            if (event == 1) {
-                $(".event1_div").toggleClass("border_none");
-                var status = $(this).attr("status");
-                if (status == 0) {
-                    $(this).text("Cancel");
-                    $(this).addClass('btn_dan');
-                    $(this).attr("status", 1);
-                    $(".img1").removeClass("img_none");
-
-                } else {
-                    $(this).text("Join Now");
-                    $(this).removeClass('btn_dan');
-                    $(this).attr("status", 0);
-                    $(".img1").addClass("img_none");
-
-
-                }
-
-            } else if (event == 2) {
-                $(".event2_div").toggleClass("border_none");
-                var status = $(this).attr("status");
-                if (status == 0) {
-                    $(this).text("Cancel");
-                    $(this).addClass('btn_dan');
-                    $(this).attr("status", 1);
-                    $(".img2").removeClass("img_none");
-
-                } else {
-                    $(this).text("Join Now");
-                    $(this).removeClass('btn_dan');
-                    $(this).attr("status", 0);
-                    $(".img2").addClass("img_none");
-
-
-                }
-            } else if (event == 3) {
-                $(".event3_div").toggleClass("border_none");
-                var status = $(this).attr("status");
-                if (status == 0) {
-                    $(this).text("Cancel");
-                    $(this).addClass('btn_dan');
-                    $(this).attr("status", 1);
-                    $(".img3").removeClass("img_none");
-
-
-
-                } else {
-                    $(this).text("Join Now");
-                    $(this).removeClass('btn_dan');
-                    $(this).attr("status", 0);
-                    $(".img3").addClass("img_none");
-
-
-                }
-            }
-
-
-
-        });
+        // $(".event").click(function() {
+        //     var event = $(this).attr("event");
+        //     if (event == 1) {
+        //         $(".event1_div").toggleClass("border_none");
+        //         var status = $(this).attr("status");
+        //         if (status == 0) {
+        //             $(this).text("Cancel");
+        //             $(this).addClass('btn_dan');
+        //             $(this).attr("status", 1);
+        //             $(".img1").removeClass("img_none");
+        //
+        //         } else {
+        //             $(this).text("Join Now");
+        //             $(this).removeClass('btn_dan');
+        //             $(this).attr("status", 0);
+        //             $(".img1").addClass("img_none");
+        //
+        //
+        //         }
+        //
+        //     } else if (event == 2) {
+        //         $(".event2_div").toggleClass("border_none");
+        //         var status = $(this).attr("status");
+        //         if (status == 0) {
+        //             $(this).text("Cancel");
+        //             $(this).addClass('btn_dan');
+        //             $(this).attr("status", 1);
+        //             $(".img2").removeClass("img_none");
+        //
+        //         } else {
+        //             $(this).text("Join Now");
+        //             $(this).removeClass('btn_dan');
+        //             $(this).attr("status", 0);
+        //             $(".img2").addClass("img_none");
+        //
+        //
+        //         }
+        //     } else if (event == 3) {
+        //         $(".event3_div").toggleClass("border_none");
+        //         var status = $(this).attr("status");
+        //         if (status == 0) {
+        //             $(this).text("Cancel");
+        //             $(this).addClass('btn_dan');
+        //             $(this).attr("status", 1);
+        //             $(".img3").removeClass("img_none");
+        //
+        //
+        //
+        //         } else {
+        //             $(this).text("Join Now");
+        //             $(this).removeClass('btn_dan');
+        //             $(this).attr("status", 0);
+        //             $(".img3").addClass("img_none");
+        //
+        //
+        //         }
+        //     }
+        //
+        //
+        //
+        // });
     </script>
 
 

@@ -16,8 +16,8 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none"><span
                                     class="user-name text-bold-600">Profile</span><span
-                                    class="user-status text-success">{{'rehman'}}</span></div>
-                            <span><img class="round" src="{{asset('userSite/dashboard/app-assets/images/backgrounds/chat-bg-2.png')}}" alt="avatar" height="40" width="40"></span>
+                                    class="user-status text-success">{{Auth::user()->f_name}}</span></div>
+                            <span><img class="round" src="{{asset('image/img_avatar.png')}}" alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ url('/logout') }}"><i class="feather icon-user"></i>Logout</a>
