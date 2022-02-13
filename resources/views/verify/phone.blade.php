@@ -60,4 +60,13 @@
 
 </body>
 
+<script>
+    $(document).ready(function(){
+        setTimeout(function() {
+        $("#phone").val('{{$num}}');
+        }, 500);
+    });
+
+</script>
+
 @endsection

@@ -208,11 +208,14 @@
 <script>
     $(document).ready(function() {
 
-        $('.selected-dial-code').click(function() {
+        $(document).on('click','.country',function() {
 
-            var countryCode = $('.selected-dial-code').text();
+            setTimeout(function() {
+                var countryCode = $('.selected-dial-code').text();
             $('#phone').val("");
-            $('#phone').val("+" + countryCode + " " + $('#phone').val());
+
+            $('#phone').val( countryCode +' ');
+            }, 100);
         });
     });
 </script>
