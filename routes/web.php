@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::view('events','events');
 
@@ -53,3 +50,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
+Route::post('/send/sms/code', [App\Http\Controllers\VerificationController::class, 'send']);
+Route::post('verify/email/code', [App\Http\Controllers\VerificationController::class, 'verify']);
+Route::get('verify/sms/resend', [App\Http\Controllers\VerificationController::class, 'resend']);
+Route::get('verify/sms', [App\Http\Controllers\VerificationController::class, 'verifysms']);
+Route::get('/', [App\Http\Controllers\UserController::class, 'index']);
+Route::post('/final/step', [App\Http\Controllers\UserController::class, 'final']);

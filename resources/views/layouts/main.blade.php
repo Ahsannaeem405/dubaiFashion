@@ -16,6 +16,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <title>Home</title>
+    <style>
+        .separate-dial-code{
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -197,6 +202,18 @@
 
     // on keyup / change flag: reset
     telInput.on("keyup change", reset);
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        $('.selected-dial-code').click(function() {
+
+            var countryCode = $('.selected-dial-code').text();
+            $('#phone').val("");
+            $('#phone').val("+" + countryCode + " " + $('#phone').val());
+        });
+    });
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
