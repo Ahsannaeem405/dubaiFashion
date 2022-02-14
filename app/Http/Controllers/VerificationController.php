@@ -41,6 +41,7 @@ class VerificationController extends Controller
             ]);
 
 
+
             return redirect('verify/sms')->with('success','code send successfully');
 
         } catch (\Exception $e) {
@@ -91,9 +92,10 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-      //  dd($code);
+     //  dd($code);
         if ($code==$request->code)
         {
+
             \Session::put('verification',true);
             return redirect('/')->with('success','verification successfully');
         }

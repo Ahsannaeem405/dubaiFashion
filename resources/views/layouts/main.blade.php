@@ -25,6 +25,7 @@
 </head>
 
 <body>
+@include('layouts.component.partial')
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand ml-md-5" href="#"><img src="{{asset('image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png')}}" class="img_header" alt=""></a>

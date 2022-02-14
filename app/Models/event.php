@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class event extends Model
 {
     use HasFactory;
+    public function eventBook()
+    {
+        $search= \Session::get('array_data');
+        return $this->hasMany('App\Models\eventBooking','event_id','id')->
+        where(function ($q) use ($search){
+            foreach ($search as $value) {
+                $q->orwhere('user_id',$value);
+            }
+       });
+    }
 }

@@ -11,7 +11,8 @@
             <p class="p1">IMPORTANT NOTE:</p>
             <p class="p1">Please fill in all the information below to help us identify your profile. We will review the application and confirm your attendance after having reviewed your data.</p>
             <p class="p1">Kindly provide true and accurate information. Our team carefully reviews each profile and wrongful applications will not be confirmed.</p>
-            <form action="/" id="myForm" method="post">
+            <form action="{{url('submit/data')}}" id="myForm" method="post">
+                @csrf
                 <div id="userform" class="row pt-3">
                     <div class="col-md-6 col-12 pt-3">
                         <label for=""><b><span class="text-danger">*</span>&nbsp; First Name</b></label>
@@ -25,7 +26,7 @@
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b><span class="text-danger">*</span>&nbsp;Email</b></label>
-                        <input type="text" class="mt-2 form-control required" name="lname[]" >
+                        <input type="text" class="mt-2 form-control required" name="email[]" >
 
                     </div>
                     <div class="col-md-6 col-12 pt-3">
@@ -41,7 +42,7 @@
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b>linkedin (Optional)</b></label>
-                        <input type="text" class="form-control" name="linked[]" >
+                        <input type="text" class="form-control" name="linkedin[]" >
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b><span class="text-danger">*</span>&nbsp;Profile Category</b></label>
@@ -67,7 +68,7 @@
                   <button class="btn btn-primary" type="button" id="someone">Some one else</button>
                     </div>
                     <div class="col-md-12 col-12 pt-3">
-                        <a > <button type="button" id="submitdata" class="btn btn-dark pl-3 pr-3"><b>Next</b> </button></a>
+                        <a > <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3"><b>Next</b> </button></a>
                     </div>
 
 
@@ -99,7 +100,7 @@
                     $(this).removeClass('error');
                 }
             });
-            if(valid){
+            if(valid==false){
                 event.preventDefault();
             }
 

@@ -12,6 +12,12 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'send/sms/code',
+        'verify/email/code',
+        '/final/step',
+        'submit/data',
+        'submit/event'
+
+
     ];
 }

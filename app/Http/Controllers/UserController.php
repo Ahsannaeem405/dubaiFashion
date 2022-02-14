@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\event;
+use App\Models\eventBooking;
+use App\Models\rsvp;
+use App\Models\seat;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,10 +22,21 @@ class UserController extends Controller
 //            }
 //        })->toSql();
 //        dd($user);
-
+//\Session::flush();
             $status = \Session::get('verification');
+
         $phone = \Session::get('phonestep');
         $num = \Session::get('phone');
+        $submit = \Session::get('submitionstep');
+        $date=Carbon::now();
+        $search= \Session::get('array_data');
+
+        if ($status == true and $phone == true && $submit == true) {
+            $events = event::with('eventBook')->whereDate('start','>=',$date)->get();
+
+            return view('events',compact('events','search'));
+        }
+
         if ($status == true and $phone == true) {
 
             return view('welcome',compact('num'));
@@ -45,4 +61,97 @@ class UserController extends Controller
 
 return redirect('/');
     }
+
+    public function submit(Request $request)
+    {
+
+        $data=array();
+  for ($i=0; $i<count($request->fname);$i++)
+  {
+
+      $revps=rsvp::where('email',$request->email[$i])->first();
+
+      if (!$revps)
+      {
+
+      $revps=new rsvp();
+      $revps->f_name=$request->fname[$i];
+      $revps->l_name=$request->lname[$i];
+      $revps->f_name=$request->fname[$i];
+      $revps->email=$request->email[$i];
+      $revps->phone=$request->phone[$i];
+      $revps->insta=$request->insta[$i];
+      $revps->linkedin=$request->linkedin[$i];
+      $revps->category=$request->cat[$i];
+
+      if ($i==0)
+      {   $revps->save();
+          $id=$revps->id;
+      }
+      if ($i!=0)
+      {
+          $revps->parent=$id;
+          $revps->save();
+      }
+
+      }
+      else{
+          if ($i==0)
+          {
+              $id=$revps->id;
+          }
+      }
+
+
+          array_push($data,$revps->id);
+
+
+
+  }
+
+
+
+ $arr= \Session::put('array_data',$data);
+ $arr= \Session::get('array_data');
+
+  \Session::put('submitionstep',true);
+  return redirect('/');
+
+    }
+
+
+    public function submitevent(Request $request)    {
+        $arr= \Session::get('array_data');
+if($request->eventId==null)
+{
+
+    return back()->with('error','please select event for booking');
+}
+else{
+    foreach ($request->eventId as $eve)
+    {
+
+        foreach ($arr as $user)
+        {
+            $find=eventBooking::where('user_id',$user)->where('event_id',$eve)->first();
+            if (!$find)
+            {
+                $event=new eventBooking();
+                $event->event_id=$eve;
+                $event->user_id=$user;
+                $event->save();
+            }
+
+        }
+    }
+
+    \Session::flush();
+    return redirect('/')->with('success','event booking request send successfully');
+}
+
+
+
+    }
+
+
 }

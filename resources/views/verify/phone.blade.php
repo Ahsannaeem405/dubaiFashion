@@ -13,7 +13,7 @@
 
         <div class="col-lg-6 my-5" style="margin-top:10% !important;%;border: 1px solid #d2d2f8;margin: auto;box-shadow: 2px 2px 2px 5px rgba(159,155,155,0.2);border-radius: 5px">
 
-@include('layouts.component.partial')
+
             <div class="row text-center d-block">
                 <div class="col-lg-12 mt-5 mb-2 ">
                     <h2>This is your whatsApp number too? </h2>
@@ -64,7 +64,7 @@
     $(document).ready(function(){
         setTimeout(function() {
         $("#phone").val('{{$num}}');
-        }, 500);
+        }, 1000);
     });
 
 </script>
