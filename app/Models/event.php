@@ -18,4 +18,9 @@ class event extends Model
             }
        });
     }
+
+    public function seat()
+    {
+        return $this->hasMany(seat::class,'event_id');
+    }
 }

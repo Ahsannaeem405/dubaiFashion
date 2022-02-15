@@ -24,6 +24,9 @@
             <li class="@yield('event')"><a href="{{url('admin/event')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard">Events</span></a>
             </li>
 
+            <li class="@yield('rsvp')"><a href="{{url('admin/rsvp')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard">Rsvp's List</span></a>
+            </li>
+
 
         </ul>
     </div>

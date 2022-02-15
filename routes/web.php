@@ -39,6 +39,13 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     Route::get('seat/del/{id}', [\App\Http\Controllers\SeatController::class, 'delSeat']);
     Route::post('/update/seat/{id}', [\App\Http\Controllers\SeatController::class, 'updateSeat']);
 
+
+
+ //rsvp
+    Route::get('/rsvp', [App\Http\Controllers\RsvpController::class, 'rsvp']);
+    Route::get('/rsvp/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind']);
+    Route::any('/rsvp/{id}/{status}', [App\Http\Controllers\RsvpController::class, 'rsvpStatus']);
+
 });
 
 Route::prefix('/counter')->middleware(['auth','counter'])->group(function () {
@@ -61,4 +68,7 @@ Route::get('verify/sms', [App\Http\Controllers\VerificationController::class, 'v
 Route::post('/final/step', [App\Http\Controllers\UserController::class, 'final']);
 Route::post('submit/data', [App\Http\Controllers\UserController::class, 'submit']);
 Route::post('submit/event', [App\Http\Controllers\UserController::class, 'submitevent']);
+
+
+
 });

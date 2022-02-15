@@ -41,7 +41,7 @@
                     <div class="row  ">
                         <div class="col-lg-6 mt-5 mb-3">
 
-                            <span>Didn't get a code? <a  href="{{url('verify/email/resend')}}" style="color: green">Resend</a></span>
+{{--                            <span>Didn't get a code? <a  href="{{url('verify/email/resend')}}" style="color: green">Resend</a></span>--}}
 
 
                         </div>
