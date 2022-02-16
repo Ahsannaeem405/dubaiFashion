@@ -214,6 +214,15 @@
                                 @endforeach
                             </div>
                         </div>
+
+
+
+                        <div class="card p-2">
+                            <div class="row text-center">
+                                <a class="m-auto" href="{{url("admin/send/pdf/$rsvp->id")}}">   <button class="btn btn-primary m-auto">Send Event detail Now</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
