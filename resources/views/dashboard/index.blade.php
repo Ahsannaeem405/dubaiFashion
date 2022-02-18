@@ -1,6 +1,5 @@
 @extends('dashboard.layouts.main')
 
-
 @section('dashboard')
 active
 @endsection
@@ -51,11 +50,11 @@ active
                                         <i class="feather icon-users text-primary font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">{{1}}</h2>
-                                <p class="mb-0">Total users</p>
+                                <h2 class="text-bold-700 mt-1">{{$user}}</h2>
+                                <p class="mb-0">Total RSVP'S</p>
                             </div>
                             <div class="card-content">
-                                <div id="line-area-chart-1"></div>
+{{--                                <div id="line-area-chart-1"></div>--}}
                             </div>
                         </div>
                     </div>
@@ -67,11 +66,11 @@ active
                                         <i class="feather icon-credit-card text-success font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">{{2}}</h2>
-                                <p class="mb-0">Total orders</p>
+                                <h2 class="text-bold-700 mt-1">{{$counter}}</h2>
+                                <p class="mb-0">Total Counter</p>
                             </div>
                             <div class="card-content">
-                                <div id="line-area-chart-2"></div>
+{{--                                <div id="line-area-chart-2"></div>--}}
                             </div>
                         </div>
                     </div>
@@ -83,11 +82,11 @@ active
                                         <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">3690k</h2>
-                                <p class="mb-0">Total sale</p>
+                                <h2 class="text-bold-700 mt-1">{{$event}}</h2>
+                                <p class="mb-0">Total Events</p>
                             </div>
                             <div class="card-content">
-                                <div id="line-area-chart-3"></div>
+{{--                                <div id="line-area-chart-3"></div>--}}
                             </div>
                         </div>
                     </div>
@@ -99,11 +98,11 @@ active
                                         <i class="feather icon-package text-warning font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">78</h2>
-                                <p class="mb-0">Total Products</p>
+                                <h2 class="text-bold-700 mt-1">{{$booking}}</h2>
+                                <p class="mb-0">Total Booking</p>
                             </div>
                             <div class="card-content">
-                                <div id="line-area-chart-4"></div>
+{{--                                <div id="line-area-chart-4"></div>--}}
                             </div>
                         </div>
                     </div>

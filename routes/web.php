@@ -47,16 +47,20 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     Route::any('/rsvp/{id}/{status}', [App\Http\Controllers\RsvpController::class, 'rsvpStatus']);
     Route::any('send/pdf/{id}/', [App\Http\Controllers\RsvpController::class, 'rsvpSend']);
 
+    //event history
+    Route::get('/event/history', [App\Http\Controllers\EventController::class, 'eventHistory']);
+    Route::get('/event/history/{id}', [App\Http\Controllers\EventController::class, 'eventHistoryfind']);
+
 });
 
 Route::prefix('/counter')->middleware(['auth','counter'])->group(function () {
     Route::get('/index', [\App\Http\Controllers\counterUserController::class, 'index']);
-    Route::get('/scan', [\App\Http\Controllers\counterUserController::class, 'scan']);
-
+    Route::get('/scan/{id}', [\App\Http\Controllers\counterUserController::class, 'scan']);
+    Route::post('event/verify', [App\Http\Controllers\counterUserController::class, 'verify']);
 });
 Auth::routes();
 
-Route::group(['middleware' => ['web']], function () {
+
     Route::get('/', [App\Http\Controllers\UserController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -71,5 +75,3 @@ Route::post('submit/data', [App\Http\Controllers\UserController::class, 'submit'
 Route::post('submit/event', [App\Http\Controllers\UserController::class, 'submitevent']);
 
 
-
-});

@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.main')
-@section('counter')
+@section('eventHistory')
     active
 @endsection
 @section('css')
@@ -24,7 +24,7 @@
 
 
 @section('heading')
-    Counters List
+    Event {{$event->name}}
 @endsection
 
 @section('title')
@@ -33,9 +33,8 @@
 
 @section('content')
 
-    <a href="{{url('admin/add/counter')}}">
-        <button class="btn btn-outline-primary mb-2"><i class="fa fa-plus"></i> Add Counter</button>
-    </a>
+
+
     <main>
         <div class="content-body">
             <section id="column-selectors">
@@ -54,34 +53,41 @@
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Address</th>
-                                                <th>Created Date</th>
-                                                <th>Action</th>
+                                                <th>User Name</th>
+                                                <th>User Email</th>
+                                                <th>User Phone</th>
+                                                <th>Event date</th>
+                                                <th>Event Time</th>
+                                                <th>Status</th>
+
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @php $count=1; @endphp
-                                            @foreach($counter as $counters)
-
+                                            @foreach($event->booking as $event)
+@if(isset($event->user->f_name))
                                                 <tr>
                                                     <td>{{$count++}}</td>
-                                                    <td>{{$counters->f_name.' '. $counters->l_name}}</td>
-                                                    <td>{{$counters->email}}</td>
-                                                    <td>{{$counters->phone}}</td>
-                                                    <td>{{$counters->address}}</td>
-                                                    <td>{{$counters->created_at}}</td>
+                                                    <td>{{$event->user->f_name}}</td>
+                                                    <td>{{$event->user->email}}</td>
+                                                    <td>{{$event->user->phone}}</td>
+                                                    <td>{{$event->event->start}}</td>
+                                                    <td>{{Carbon\Carbon::parse($event->event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->event->endtime)->format('h:i a')}}</td>
                                                     <td>
-                                                        <a onclick="return confirm('Are you sure you want to Remove?');"
-                                                           href="{{url("admin/counter/del/$counters->id")}}"><i
-                                                                style="color: red;font-size: 20px"
-                                                                class="fa fa-trash p-2"></i></a>
-                                                        <a href="{{url("admin/counter/edit/$counters->id")}}"><i
-                                                                style="color: blue;font-size: 20px"
-                                                                class="fa fa-edit p-2"></i></a></td>
+
+
+                                                        @if($event->join==1)
+                                                            <button class="btn btn-success">JOINED</button>
+                                                            @else
+                                                            <button class="btn btn-danger">JOIN</button>
+                                                        @endif
+                                                    </td>
+
                                                 </tr>
+@endif
+
+
+
 
                                             @endforeach
 

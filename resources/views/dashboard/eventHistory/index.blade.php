@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.main')
-@section('counter')
+@section('eventHistory')
     active
 @endsection
 @section('css')
@@ -24,7 +24,7 @@
 
 
 @section('heading')
-    Counters List
+    Events History
 @endsection
 
 @section('title')
@@ -33,9 +33,8 @@
 
 @section('content')
 
-    <a href="{{url('admin/add/counter')}}">
-        <button class="btn btn-outline-primary mb-2"><i class="fa fa-plus"></i> Add Counter</button>
-    </a>
+
+
     <main>
         <div class="content-body">
             <section id="column-selectors">
@@ -54,34 +53,37 @@
                                             <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Address</th>
-                                                <th>Created Date</th>
+                                                <th>Event date</th>
+                                                <th>Event Time</th>
+                                                <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @php $count=1; @endphp
-                                            @foreach($counter as $counters)
+                                            @foreach($events as $event)
 
                                                 <tr>
                                                     <td>{{$count++}}</td>
-                                                    <td>{{$counters->f_name.' '. $counters->l_name}}</td>
-                                                    <td>{{$counters->email}}</td>
-                                                    <td>{{$counters->phone}}</td>
-                                                    <td>{{$counters->address}}</td>
-                                                    <td>{{$counters->created_at}}</td>
+                                                    <td><img src="{{asset('uploads/appsetting/'.$event->image.'')}}" alt="image" style="width: 100px;height: 100px"></td>
+                                                    <td>{{$event->name}}</td>
+                                                    <td>{{$event->start}}</td>
+                                                    <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>
+                                                    <td>{{$event->desc}}</td>
+
                                                     <td>
-                                                        <a onclick="return confirm('Are you sure you want to Remove?');"
-                                                           href="{{url("admin/counter/del/$counters->id")}}"><i
-                                                                style="color: red;font-size: 20px"
-                                                                class="fa fa-trash p-2"></i></a>
-                                                        <a href="{{url("admin/counter/edit/$counters->id")}}"><i
-                                                                style="color: blue;font-size: 20px"
-                                                                class="fa fa-edit p-2"></i></a></td>
+                                                        <a href="{{url("admin/event/history/$event->id")}}">
+                                                            <i style="color: skyblue;font-size: 20px" class="fa fa-eject p-1"></i></a>
+
+
+
+                                                    </td>
                                                 </tr>
+
+
+
 
                                             @endforeach
 

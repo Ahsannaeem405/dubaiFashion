@@ -16,7 +16,8 @@ class VerifyCsrfToken extends Middleware
         'verify/email/code',
         '/final/step',
         'submit/data',
-        'submit/event'
+        'submit/event',
+        'counter/event/verify'
 
 
     ];

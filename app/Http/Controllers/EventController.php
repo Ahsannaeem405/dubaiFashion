@@ -78,4 +78,21 @@ class EventController extends Controller
     }
 
 
+    public function eventHistory(){
+        $events=event::all();
+return view('dashboard.eventHistory.index',compact('events'));
+    }
+
+    public function eventHistoryfind($id)
+    {
+
+        $event=event::with('booking')->find($id);
+
+
+        return view('dashboard.eventHistory.history',compact('event'));
+
+
+    }
+
+
 }

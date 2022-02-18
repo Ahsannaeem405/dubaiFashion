@@ -77,7 +77,10 @@ class RsvpController extends Controller
             ->whereIn('status',['Approved']);
         })->with('event')->get();
 
-
+        if (count($events)==0)
+        {
+            return redirect('admin/rsvp')->with('error','No event found.');
+        }
 
 
 
