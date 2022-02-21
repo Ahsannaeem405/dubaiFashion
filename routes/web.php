@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index']);
+    Route::get('/setting', [\App\Http\Controllers\AdminController::class, 'setting']);
+    Route::post('/setting/update', [\App\Http\Controllers\AdminController::class, 'settingupdate']);
     Route::get('/counter', [\App\Http\Controllers\CounterController::class, 'index']);
     Route::get('/add/counter', [\App\Http\Controllers\CounterController::class, 'add']);
     Route::post('/counter/store', [\App\Http\Controllers\CounterController::class, 'store']);

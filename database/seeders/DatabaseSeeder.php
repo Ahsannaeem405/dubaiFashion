@@ -15,11 +15,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $hash=Hash::make('12345678');
-        DB::table('users')->insert([
+//        $hash=Hash::make('12345678');
+//        DB::table('users')->insert([
+//
+//            ['f_name' => "admin",'email'=>'admin@demo.com','password'=>''.$hash.'','role'=>'admin'],
+//
+//        ]);
+        DB::table('settings')->insert([
 
-            ['f_name' => "admin",'email'=>'admin@demo.com','password'=>''.$hash.'','role'=>'admin'],
+            ['heading' => "dummy text"],
 
         ]);
     }
 }
+

@@ -8,6 +8,7 @@
 
     <section class="mt-5 mb-5 pt-5">
         <div class="container con_shadow p-5">
+            <h3 class="text-center">{{$heading->heading}}</h3>
             <p class="p1">IMPORTANT NOTE:</p>
             <p class="p1">Please fill in all the information below to help us identify your profile. We will review the application and confirm your attendance after having reviewed your data.</p>
             <p class="p1">Kindly provide true and accurate information. Our team carefully reviews each profile and wrongful applications will not be confirmed.</p>

@@ -6,6 +6,7 @@ use App\Models\event;
 use App\Models\eventBooking;
 use App\Models\rsvp;
 use App\Models\seat;
+use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class UserController extends Controller
         $submit = \Session::get('submitionstep');
         $date=Carbon::now();
         $search= \Session::get('array_data');
+        $heading= Setting::first();
 
         if ($status == true and $phone == true && $submit == true) {
             $events = event::with('eventBook')->whereDate('start','>=',$date)->get();
@@ -46,6 +48,7 @@ class UserController extends Controller
             return view('verify.phone',compact('num'));
         }
 
+       // return view('welcome',compact('num','heading'));
 
         return view('verify.index');
 
