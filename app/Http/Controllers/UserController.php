@@ -41,7 +41,7 @@ class UserController extends Controller
 
         if ($status == true and $phone == true) {
 
-            return view('welcome',compact('num'));
+            return view('welcome',compact('num','heading'));
         }
         elseif ($status == true) {
 

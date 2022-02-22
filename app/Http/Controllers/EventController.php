@@ -19,18 +19,24 @@ class EventController extends Controller
         $event=new event();
         $event->name=$request->name;
         $event->desc=$request->desc;
+        $event->title=$request->title;
 
 
+        $filenamefinal=null;
+        if ($request->hasFile('image'))
+        {
+            foreach  ($request->image as  $imagefile) {
+                $file = $imagefile;
+                $extension = $file->getClientOriginalExtension(); // getting image extension
+                $filename = $file->getClientOriginalName().time().'.' . $extension;
+                $file->move('uploads/appsetting/', $filename);
+//dd($filename);
+                $filenamefinal=$filenamefinal.$filename.',';
 
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time().'.' . $extension;
-            $file->move('uploads/appsetting/', $filename);
-
-            $event->image = $filename;
-
+            }
         }
+
+        $event->image = $filenamefinal;
         $event->start=$request->start;
         $event->starttime=$request->starttime;
         $event->endtime=$request->endtime;
@@ -57,17 +63,25 @@ class EventController extends Controller
         $event->name=$request->name;
         $event->desc=$request->desc;
 
+        $event->title=$request->title;
 
 
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
+        $filenamefinal=null;
+if ($request->hasFile('image'))
+{
+        foreach  ($request->image as  $imagefile) {
+            $file = $imagefile;
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time().'.' . $extension;
+            $filename = $file->getClientOriginalName().time().'.' . $extension;
             $file->move('uploads/appsetting/', $filename);
-
-            $event->image = $filename;
+//dd($filename);
+            $filenamefinal=$filenamefinal.$filename.',';
 
         }
+    $event->image = $filenamefinal;
+        }
+
+
         $event->start=$request->start;
         $event->starttime=$request->starttime;
         $event->endtime=$request->endtime;
