@@ -22,15 +22,7 @@ class VerificationController extends Controller
 
         try {
 
-//            $msg=    \Http::withBasicAuth('','')->post('https://api.twilio.com/2010-04-01/Accounts/ACbead71d23617c0595795811995b1e858/Messages.json',[
-//                'To'=>'+971502784134',
-//                'MessagingServiceSid'=>'MG500f0f9f3688807c3f6fb6bf0bac7a78',
-//                'Body'=>'test',
-//            ]);
-//            dd($msg->body());
 
-            $basic  = new \Vonage\Client\Credentials\Basic(env('NEXMO_KEY'), env('NEXMO_SECRET'));
-            $client = new \Vonage\Client($basic);
 
 
             $code=rand(100000, 999999);
@@ -42,12 +34,19 @@ class VerificationController extends Controller
             $receiverNumber = $request->phone;
             $message = "Your verification code is $code";
 
-            $data= $client->message()->send([
-                'to' => $receiverNumber,
-                'from' => 'Gigli',
-                'text' => $message
-            ]);
+            $msg=    \Http::
+            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                    'To'=>$receiverNumber,
+                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
+                    'Body'=>$message,
+                ]);
 
+            if($msg->successful()!=true)
+            {
+                $res=json_decode($msg->body());
+                return back()->with('error',$res->message);
+            }
 
 
             return redirect('verify/sms')->with('success','code send successfully');
@@ -69,8 +68,6 @@ class VerificationController extends Controller
         try {
 
 
-            $basic  = new \Vonage\Client\Credentials\Basic(env('NEXMO_KEY'), env('NEXMO_SECRET'));
-            $client = new \Vonage\Client($basic);
 
 
             $code=rand(100000, 999999);
@@ -79,14 +76,22 @@ class VerificationController extends Controller
             \Session::put('code',$code);
             $phone=  \Session::get('phone');
 
-            $receiverNumber = $request->phone;
+
             $message = "Your verification code is $code";
 
-            $data= $client->message()->send([
-                'to' => $phone,
-                'from' => 'Gigli',
-                'text' => $message
-            ]);
+            $msg=    \Http::
+            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                    'To'=>$phone,
+                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
+                    'Body'=>$message,
+                ]);
+
+            if($msg->successful()!=true)
+            {
+                $res=json_decode($msg->body());
+                return back()->with('error',$res->message);
+            }
 
             return back()->with('success','code Resend successfully');
 
