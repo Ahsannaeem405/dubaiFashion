@@ -22,6 +22,7 @@ class CreateRsvpsTable extends Migration
             $table->string('insta')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('category')->nullable();
+            $table->text('code')->nullable();
             $table->integer('parent')->nullable();
             $table->timestamps();
         });

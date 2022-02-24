@@ -13,4 +13,7 @@ class rsvp extends Model
     {
         return $this->hasMany('App\Models\eventBooking','user_id','id');
     }
+
+
+
 }

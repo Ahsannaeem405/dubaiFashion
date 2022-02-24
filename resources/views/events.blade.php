@@ -1,11 +1,17 @@
 @extends('layouts.main')
 @section('content')
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         input[type=checkbox] {
             transform: scale(1.5);
         }
     </style>
+    <div>
+
+    </div>
     <form action="{{url('submit/event')}}" method="post">
         @csrf
 
@@ -46,21 +52,25 @@
                         @php
                             $imgs=explode(',',$event->image);
                         @endphp
+                        <div class="col-lg-8">
+                        <div class="owl-carousel owl-theme">
                         @foreach($imgs as $img)
-                            @if($img!='')
-                                <div class="col-lg-2 pl-1 pr-0">
+                            @if($img!='')<div class="item">
+                                            <img class=""
+                                                 src="{{asset('uploads/appsetting/'.$img.'')}}"
+                                                 style="width: 100%;height:     250px"
+                                                 alt="">
+                                        </div>
 
 
-                                    <img class=""
-                                         src="{{asset('uploads/appsetting/'.$img.'')}}"
-                                         style="width: 100%;height:     250px"
-                                         alt="">
-                                </div>
+
+
                             @endif
 
 
                         @endforeach
-
+                        </div>
+                        </div>
 
                         <div style="height: 2px;background-color: #ccc8c8" class="w-100 my-2"></div>
                     </div>
@@ -126,6 +136,22 @@
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+
+            nav:false,
+            items:4,
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            dots:false,
+
+        })
+    </script>
     <script>
         $(".event").click(function () {
             var event = $(this).attr("event");

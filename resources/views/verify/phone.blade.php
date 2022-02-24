@@ -16,7 +16,7 @@
 
             <div class="row text-center d-block">
                 <div class="col-lg-12 mt-5 mb-2 ">
-                    <h2>This is your whatsApp number too? </h2>
+                    <h2>Are you using the same number for WhatsApp? </h2>
 
 
                 </div>

@@ -53,7 +53,7 @@
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Image</th>
+
                                                 <th>Name</th>
                                                 <th>Event date</th>
                                                 <th>Event Time</th>
@@ -67,7 +67,6 @@
 
                                                 <tr>
                                                     <td>{{$count++}}</td>
-                                                    <td><img src="{{asset('uploads/appsetting/'.$event->image.'')}}" alt="image" style="width: 100px;height: 100px"></td>
                                                     <td>{{$event->name}}</td>
                                                     <td>{{$event->start}}</td>
                                                     <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>

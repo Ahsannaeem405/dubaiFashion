@@ -38,11 +38,11 @@
 
                     </div>
                     <div class="col-md-12 col-12 pt-3">
-                        <label for=""><b>Instagram(Optional)</b></label>
+                        <label for=""><b>Instagram</b></label>
                         <input type="text" class="form-control" name="insta[]" >
                     </div>
                     <div class="col-md-12 col-12 pt-3">
-                        <label for=""><b>linkedin (Optional)</b></label>
+                        <label for=""><b>linkedin</b></label>
                         <input type="text" class="form-control" name="linkedin[]" >
                     </div>
                     <div class="col-md-12 col-12 pt-3">
@@ -56,6 +56,12 @@
                             <option value="Press">Guest</option>
 
                         </select><br>
+
+                        <div class="col-md-12 col-12 p-0">
+                            <label for=""><b>Invite code(Optional)</b></label>
+                            <input type="text" class="form-control" name="code[]" >
+                        </div>
+
                         <i class="p1">* Are you attending with someone who has already registered? Please mention their name below to ensure your seats are assigned together. Ps. If you want to attend with another guest please ask them to rsvp. Plus 1 is not accepted
                             unless the name is on the list.</i>
 
@@ -66,7 +72,7 @@
                 <div id="append" class="w-100 row"></div>
 
                     <div class="col-md-12 col-12 pt-3" style="text-align: right">
-                  <button class="btn btn-primary" type="button" id="someone">Some one else</button>
+                  <button class="btn btn-primary" type="button" id="someone">Add more visitor</button>
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <a > <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3"><b>Next</b> </button></a>

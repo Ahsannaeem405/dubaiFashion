@@ -17,7 +17,7 @@ class RsvpController extends Controller
         $rsvp=rsvp::whereHas('userEvent', function($q) {
                      $q->where('send',0)
                          ->whereIn('status',['pending','Approved']);
-        })->get();
+        })->where('parent',null)->get();
 
 
         return view('dashboard.rsvp.index',compact('rsvp'));
@@ -27,21 +27,12 @@ class RsvpController extends Controller
     public function rsvpFind($id)
     {
         $rsvp=rsvp::find($id);
-        $events=eventBooking::where('user_id',$id)->where(function($q) {
-            $q->where('send',0)->
-            whereIn('status',['pending','Approved']);
-        })->with('event')->get();
-        $travelling=rsvp::where('parent',$id)->get();
-        if($rsvp->parent!=null)
-        {
-            $parent=rsvp::find($rsvp->parent);
-        }
-        else{
-            $parent=null;
-        }
+        $events=eventBooking::where('user_id',$id)->with('event')->get();
+        $travelling=rsvp::with('userEvent')
+            ->where('parent',$id)->get();
 
 
-        return view('dashboard.rsvp.rsvpEvent',compact('rsvp','events','travelling','parent'));
+        return view('dashboard.rsvp.rsvpEvent',compact('rsvp','events','travelling','id'));
     }
 
     public function rsvpStatus($id,$staus,Request $request)
@@ -77,13 +68,43 @@ class RsvpController extends Controller
             ->whereIn('status',['Approved']);
         })->with('event')->get();
 
-        if (count($events)==0)
+        if (count($events)!=0)
         {
-            return redirect('admin/rsvp')->with('error','No event found.');
+            $email=$rsvp->email;
+
+            $rand2 =  rand(00000,99999);
+            $idd =  ($id);
+
+            $host="$idd";
+            $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
+            $rand= rand(0, 99999999999999);
+            $path = 'pdf/';
+            $fileName = $rand . '.' . 'pdf' ;
+            $pdf->save($path  . $fileName);
+
+            Mail::to($email)->send(new result($rand));
+
+
+            $events=eventBooking::where('user_id',$id)->where(function($q) {
+                $q->where('send',0)
+                    ->whereIn('status',['Approved']);
+            })->update(['send'=>1]);
+
         }
 
 
 
+        $rsvp=rsvp::where('parent',$id)->get();
+foreach ($rsvp as $rsvp)
+{
+
+    $events=eventBooking::where('user_id',$rsvp->id)->where(function($q) {
+        $q->where('send',0)
+            ->whereIn('status',['Approved']);
+    })->with('event')->get();
+
+    if (count($events)!=0)
+    {
         $email=$rsvp->email;
 
         $rand2 =  rand(00000,99999);
@@ -99,16 +120,26 @@ class RsvpController extends Controller
         Mail::to($email)->send(new result($rand));
 
 
-        $events=eventBooking::where('user_id',$id)->where(function($q) {
+        $events=eventBooking::where('user_id',$rsvp->id)->where(function($q) {
             $q->where('send',0)
                 ->whereIn('status',['Approved']);
         })->update(['send'=>1]);
 
+    }
 
 
 
 
-        return redirect('admin/rsvp')->with('success','Notification send successfully');
+
+
+}
+
+
+
+
+
+
+        return back()->with('success','Notification send successfully');
 
 
     }

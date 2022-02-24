@@ -48,6 +48,7 @@ class UserController extends Controller
             return view('verify.phone',compact('num'));
         }
 
+
        // return view('welcome',compact('num','heading'));
 
         return view('verify.index');
@@ -86,6 +87,7 @@ return redirect('/');
       $revps->insta=$request->insta[$i];
       $revps->linkedin=$request->linkedin[$i];
       $revps->category=$request->cat[$i];
+      $revps->code=$request->code[$i];
 
       if ($i==0)
       {   $revps->save();
@@ -149,7 +151,7 @@ else{
     }
 
     \Session::flush();
-    return redirect('/')->with('success','event booking request send successfully');
+    return redirect('/')->with('success','Booking request send successfully!');
 }
 
 

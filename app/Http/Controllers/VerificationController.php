@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use mysql_xdevapi\Exception;
+use Twilio\Rest\Client;
 
 class VerificationController extends Controller
 {
@@ -20,6 +21,13 @@ class VerificationController extends Controller
 
 
         try {
+
+//            $msg=    \Http::withBasicAuth('','')->post('https://api.twilio.com/2010-04-01/Accounts/ACbead71d23617c0595795811995b1e858/Messages.json',[
+//                'To'=>'+971502784134',
+//                'MessagingServiceSid'=>'MG500f0f9f3688807c3f6fb6bf0bac7a78',
+//                'Body'=>'test',
+//            ]);
+//            dd($msg->body());
 
             $basic  = new \Vonage\Client\Credentials\Basic(env('NEXMO_KEY'), env('NEXMO_SECRET'));
             $client = new \Vonage\Client($basic);
@@ -59,6 +67,7 @@ class VerificationController extends Controller
 
 
         try {
+
 
             $basic  = new \Vonage\Client\Credentials\Basic(env('NEXMO_KEY'), env('NEXMO_SECRET'));
             $client = new \Vonage\Client($basic);
