@@ -61,6 +61,10 @@ class RsvpController extends Controller
 
     public function rsvpSend($id)
     {
+
+
+
+
         $rsvp=rsvp::find($id);
 
         $events=eventBooking::where('user_id',$id)->where(function($q) {
@@ -75,7 +79,7 @@ class RsvpController extends Controller
             $rand2 =  rand(00000,99999);
             $idd =  ($id);
 
-            $host="$idd";
+            $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
@@ -89,6 +93,17 @@ class RsvpController extends Controller
                 $q->where('send',0)
                     ->whereIn('status',['Approved']);
             })->update(['send'=>1]);
+
+
+            $message="Test message";
+            $phone=$rsvp->phone;
+            $msg=    \Http::
+            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                    'To'=>"whatsapp:$phone",
+                    'From'=>"whatsapp:+14155238886",
+                    'Body'=>$message,
+                ]);
 
         }
 
@@ -110,7 +125,7 @@ foreach ($rsvp as $rsvp)
         $rand2 =  rand(00000,99999);
         $idd =  ($id);
 
-        $host="$idd";
+        $host="$rsvp->id";
         $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
         $rand= rand(0, 99999999999999);
         $path = 'pdf/';
@@ -124,6 +139,17 @@ foreach ($rsvp as $rsvp)
             $q->where('send',0)
                 ->whereIn('status',['Approved']);
         })->update(['send'=>1]);
+
+
+        $message="Test message";
+        $phone=$rsvp->phone;
+        $msg=    \Http::
+        withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+            ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                'To'=>"whatsapp:$phone",
+                'From'=>"whatsapp:+14155238886",
+                'Body'=>$message,
+            ]);
 
     }
 

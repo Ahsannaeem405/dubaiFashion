@@ -42,6 +42,7 @@ class VerificationController extends Controller
                     'Body'=>$message,
                 ]);
 
+
             if($msg->successful()!=true)
             {
                 $res=json_decode($msg->body());
@@ -67,9 +68,6 @@ class VerificationController extends Controller
 
         try {
 
-
-
-
             $code=rand(100000, 999999);
 
 
@@ -86,6 +84,8 @@ class VerificationController extends Controller
                     'MessagingServiceSid'=>env('TWELLO_MSGID'),
                     'Body'=>$message,
                 ]);
+
+
 
             if($msg->successful()!=true)
             {

@@ -39,11 +39,11 @@
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b>Instagram</b></label>
-                        <input type="text" class="form-control" name="insta[]" >
+                        <input type="text" class="form-control insta" name="insta[]" >
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b>linkedin</b></label>
-                        <input type="text" class="form-control" name="linkedin[]" >
+                        <input type="text" class="form-control linkedin" name="linkedin[]" >
                     </div>
                     <div class="col-md-12 col-12 pt-3">
                         <label for=""><b><span class="text-danger">*</span>&nbsp;Profile Category</b></label>
@@ -107,9 +107,30 @@
                     $(this).removeClass('error');
                 }
             });
+
+            var insta = $(".insta");
+            var linkedin = $(".linkedin");
+
+            for(var i = 0; i < insta.length; i++){
+            var val1=  $(insta[i]).val();
+            var val2=  $(linkedin[i]).val();
+
+            if(val1=='' && val2=='')
+            {
+                swal("Please provide atleast one social link of each user", "", "error", {
+                    button: "Close",
+                });
+               valid=false;
+            }
+            }
+
             if(valid==false){
                 event.preventDefault();
             }
+
+
+
+
 
         });
         });
