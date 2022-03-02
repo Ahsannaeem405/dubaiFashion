@@ -145,7 +145,7 @@ foreach ($rsvp as $rsvp)
         $phone=$rsvp->phone;
         $msg=    \Http::
         withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-            ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+            ->asForm() ->post(env('TWELLO_URL'),[
                 'To'=>"whatsapp:$phone",
                 'From'=>"whatsapp:+14155238886",
                 'Body'=>$message,
