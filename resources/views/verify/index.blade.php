@@ -62,4 +62,13 @@
 
     </body>
 
+    <script>
+        $(document).ready(function(){
+            var countryCode = $('.selected-dial-code').text();
+            setTimeout(function() {
+                $("#phone").val(countryCode+' ');
+            }, 1000);
+        });
+    </script>
+
 @endsection

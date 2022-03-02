@@ -36,7 +36,7 @@ class VerificationController extends Controller
 
             $msg=    \Http::
             withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACbead71d23617c0595795811995b1e858/Messages.json',[
                     'To'=>$receiverNumber,
                     'MessagingServiceSid'=>env('TWELLO_MSGID'),
                     'Body'=>$message,
@@ -64,8 +64,6 @@ class VerificationController extends Controller
     public function resend(Request $request)
     {
 
-
-
         try {
 
             $code=rand(100000, 999999);
@@ -79,7 +77,7 @@ class VerificationController extends Controller
 
             $msg=    \Http::
             withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACbead71d23617c0595795811995b1e858/Messages.json',[
                     'To'=>$phone,
                     'MessagingServiceSid'=>env('TWELLO_MSGID'),
                     'Body'=>$message,
