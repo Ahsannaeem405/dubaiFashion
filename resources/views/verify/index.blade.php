@@ -64,11 +64,12 @@
 
     <script>
         $(document).ready(function(){
-            var countryCode = $('.selected-dial-code').text();
-            alert(countryCode);
+
+
             setTimeout(function() {
+                var countryCode = $('.selected-dial-code').text();
                 $("#phone").val(countryCode+' ');
-            }, 5000);
+            }, 2000);
         });
     </script>
 
