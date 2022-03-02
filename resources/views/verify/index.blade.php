@@ -67,7 +67,7 @@
             var countryCode = $('.selected-dial-code').text();
             setTimeout(function() {
                 $("#phone").val(countryCode+' ');
-            }, 1000);
+            }, 5000);
         });
     </script>
 
