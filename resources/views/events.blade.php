@@ -19,9 +19,10 @@
         <div class="container pt-5">
             <div class="row ">
 
-                @foreach($events as $event)
+                @foreach($events as $title)
+                @foreach($title as $event)
 
-                    <div class="row w-100 m-0">
+                    <div class="row w-100 m-0 mb-2">
 
 
 
@@ -72,53 +73,18 @@
                         </div>
                         </div>
 
-                        <div style="height: 2px;background-color: #ccc8c8" class="w-100 my-2"></div>
+
                     </div>
+                        @endforeach
+
+                    <div style="height: 2px;background-color: #ccc8c8" class="w-100 my-2"></div>
+
                         @endforeach
                     </div>
             </div>
 
 
 
-        {{--            @foreach($events as $event)--}}
-        {{--                <input type="checkbox" value="{{$event->id}}" style="display: none" name="eventId[]" id="eventid{{$event->id}}">--}}
-        {{--                <div class="col-xl-4 col-lg-6  col-md-8 col-sm-8 col-12">--}}
-        {{--                    <div class="group-card event{{$event->id}}_div mx-0 mx-sm-0">--}}
-        {{--                        <div class="group-card-img">--}}
-        {{--                            <img src="{{asset('uploads/appsetting/'.$event->image.'')}}" />--}}
-        {{--                      @if(count($event->eventBook)==count($search))--}}
-        {{--                                <button class="rejis-btn "  style="background-color: gray;border: none" disabled  event="{{$event->id}}" status="0">--}}
-        {{--                                    Join Now--}}
-        {{--                                </button>--}}
-        {{--                            @else--}}
-
-        {{--                                <a class="rejis-btn event"  event="{{$event->id}}" status="0">--}}
-        {{--                                    Join Now--}}
-        {{--                                </a>--}}
-
-        {{--                      @endif--}}
-
-
-        {{--                        </div>--}}
-
-        {{--                        <div class="group-card-body">--}}
-        {{--                            <h4 class="event-name text-center"><img src="{{asset('image/verified-icon-png-11.jpg')}}" class="img{{$event->id}} img_none" width="30" alt=""> {{$event->name}}</h4>--}}
-        {{--                            <div class="row py-2">--}}
-        {{--                                <div class="col-4">--}}
-        {{--                                    <p><i class="far fa-calendar-alt mx-1"></i>{{$event->start}}</p>--}}
-        {{--                                </div>--}}
-        {{--                                <div class="col-8 ">--}}
-        {{--                                    <p class="text-end"><i class="far fa-clock mx-1"></i>{{$event->starttime}} to {{$event->endtime}}</p>--}}
-        {{--                                </div>--}}
-        {{--                                <p class="event-dis mb-0 text-center pr-2 pl-2">--}}
-        {{--                                    {{$event->desc}}--}}
-        {{--                                </p>--}}
-        {{--                            </div>--}}
-
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            @endforeach--}}
 
 
         <div class="col-lg-12 text-center my-5">

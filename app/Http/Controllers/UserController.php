@@ -34,7 +34,7 @@ class UserController extends Controller
         $heading= Setting::first();
 
         if ($status == true and $phone == true && $submit == true) {
-            $events = event::with('eventBook')->whereDate('start','>=',$date)->get();
+            $events = event::with('eventBook')->whereDate('start','>=',$date)->get()->groupBy('title');
 
             return view('events',compact('events','search'));
         }
