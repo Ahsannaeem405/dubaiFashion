@@ -74,7 +74,7 @@ class RsvpController extends Controller
 
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
-          // return view('pdf.report',compact('host','events','rsvp'));
+         // return view('pdf.report',compact('host','events','rsvp'));
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
             $fileName = $rand . '.' . 'pdf' ;

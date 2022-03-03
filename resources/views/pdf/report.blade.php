@@ -13,7 +13,7 @@
     <thead>
     <tr>
         <th scope="col" style="width: 50%;background-color: black;border-radius: 15px;"><img
-                src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" alt="" style="width: 62%;height: 157px;">
+                src="image/png10.png" alt="" style="width: 250px;height: 250px;">
         </th>
         <th scope="col" style="width: 50%;color: darkgray;  padding-top: 30px;text-align: center;padding-left: 150px;">
 
@@ -116,23 +116,23 @@
 </style>
 
 
-<table class="table" style="width: 100%">
+<table class="table" style="width: 100%;border-spacing: 0 45px">
     <thead>
     <tr>
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png1.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png2.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png3.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png4.png" style="width: 50%" alt="">
         </th>
 
 
@@ -142,20 +142,20 @@
 
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png5.png" style="width: 50%" alt="">
         </th>
 
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png6.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png7.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png8.png" style="width: 50%" alt="">
         </th>
 
     </tr>
@@ -172,16 +172,16 @@
     <tr>
 
         <th scope="col" style="width: 33%;text-align: right;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png9.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 33%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png2.png" style="width: 50%" alt="">
         </th>
 
 
         <th scope="col" style="width: 33%;text-align: left;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png11.png" style="width: 50%" alt="">
         </th>
 
     </tr>
@@ -193,19 +193,19 @@
     <thead>
     <tr>
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png11.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png12.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/png5.png" style="width: 50%" alt="">
         </th>
 
         <th scope="col" style="width: 25%;text-align: center;">
-            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 100px;height: 100px" alt="">
+            <img src="image/ARAB-FASHION-WEEK-X-D3-LOGO_white-150x150.png" style="width: 50%" alt="">
         </th>
 
 
