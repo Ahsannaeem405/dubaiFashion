@@ -71,10 +71,10 @@
 
                 <div id="append" class="w-100 row"></div>
 
-                    <div class="col-md-12 col-12 pt-3" style="text-align: right">
-                  <button class="btn btn-primary" type="button" id="someone">Add more visitor</button>
+                    <div class="col-md-12 col-12 pt-3" style="text-align: center">
+                  <button class="btn btn-primary" type="button" id="someone">Add more guests</button>
                     </div>
-                    <div class="col-md-12 col-12 pt-3">
+                    <div class="col-md-12 col-12 pt-3 text-right">
                         <a > <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3"><b>Next</b> </button></a>
                     </div>
 
