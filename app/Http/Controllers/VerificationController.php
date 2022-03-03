@@ -14,6 +14,14 @@ class VerificationController extends Controller
     public function verifysms(){
         return view('verify.verify');
     }
+
+    public function send2(Request $request)
+    {
+        \Session::put('phone',$request->phone);
+
+        \Session::put('verification',true);
+        return redirect('/');
+    }
     public function send(Request $request)
     {
 
@@ -27,14 +35,15 @@ class VerificationController extends Controller
             $receiverNumber = $request->phone;
             $message = "Your verification code is $code";
 
-            $msg=    \Http::
-            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-                ->asForm() ->post(env('TWELLO_URL'),[
-                    'To'=>$receiverNumber,
-                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
-                    'Body'=>$message,
-                ]);
+//            $msg=    \Http::
+//            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+//                ->asForm() ->post(env('TWELLO_URL'),[
+//                    'To'=>$receiverNumber,
+//                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
+//                    'Body'=>$message,
+//                ]);
 
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$receiverNumber.'&message='.$message.'&sid=xxxxxxxx&mtype=N&DR=Y');
 
             if($msg->successful()!=true)
             {
@@ -43,7 +52,7 @@ class VerificationController extends Controller
             }
 
 
-            return redirect('verify/sms')->with('success','code send successfully');
+            return redirect('verify/sms')->with('success','Code send successfully');
 
         } catch (\Exception $e) {
 
@@ -68,14 +77,15 @@ class VerificationController extends Controller
 
             $message = "Your verification code is $code";
 
-            $msg=    \Http::
-            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-                ->asForm() ->post(env('TWELLO_URL'),[
-                    'To'=>$phone,
-                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
-                    'Body'=>$message,
-                ]);
+//            $msg=    \Http::
+//            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+//                ->asForm() ->post(env('TWELLO_URL'),[
+//                    'To'=>$phone,
+//                    'MessagingServiceSid'=>env('TWELLO_MSGID'),
+//                    'Body'=>$message,
+//                ]);
 
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$phone.'&message='.$message.'&sid=xxxxxxxx&mtype=N&DR=Y');
 
 
             if($msg->successful()!=true)
@@ -84,7 +94,7 @@ class VerificationController extends Controller
                 return back()->with('error',$res->message);
             }
 
-            return back()->with('success','code Resend successfully');
+            return back()->with('success','Code Resend successfully');
 
         } catch (\Exception $e) {
 

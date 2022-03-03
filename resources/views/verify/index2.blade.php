@@ -6,7 +6,6 @@
 
     <body>
 
-
     <div class="container">
 
         <div class="row m-0">
@@ -16,12 +15,12 @@
 
                 <div class="row text-center d-block">
                     <div class="col-lg-12 mt-5 mb-2 ">
-                        <h2>Enter Your Phone Number For Verification </h2>
+                        <h2>Enter Your Phone Number  </h2>
 
                     </div>
                 </div>
 
-                <form action="{{url('send/sms/code')}}" method="post">
+                <form action="{{url('send/sms/code2')}}" method="post">
                     @csrf
                     <div class="row ">
                         <div class="col-lg-12 mb-2 p-4" style="">
@@ -68,7 +67,7 @@
 
             setTimeout(function() {
                 var countryCode = $('.selected-dial-code').text();
-                $("#phone").val(countryCode);
+                $("#phone").val(countryCode+' ');
             }, 2000);
         });
     </script>

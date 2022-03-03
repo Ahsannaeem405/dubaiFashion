@@ -48,7 +48,6 @@ class UserController extends Controller
             return view('verify.phone',compact('num'));
         }
 
-
        // return view('welcome',compact('num','heading'));
 
         return view('verify.index');

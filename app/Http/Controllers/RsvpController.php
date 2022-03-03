@@ -40,7 +40,6 @@ class RsvpController extends Controller
         if (\request()->post())
         {
          //   dd($request->input());
-
             $rsvp=eventBooking::find($id);
             $rsvp->status=$staus;
             $rsvp->seat=$request->seatname==null ? $request->seat : $request->seatname;
@@ -55,18 +54,11 @@ class RsvpController extends Controller
             return back()->with('success','Status updated successfully');
         }
 
-
-
     }
 
     public function rsvpSend($id)
     {
-
-
-
-
         $rsvp=rsvp::find($id);
-
         $events=eventBooking::where('user_id',$id)->where(function($q) {
             $q->where('send',0)
             ->whereIn('status',['Approved']);
@@ -74,6 +66,7 @@ class RsvpController extends Controller
 
         if (count($events)!=0)
         {
+
             $email=$rsvp->email;
 
             $rand2 =  rand(00000,99999);
@@ -81,6 +74,7 @@ class RsvpController extends Controller
 
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
+          // return view('pdf.report',compact('host','events','rsvp'));
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
             $fileName = $rand . '.' . 'pdf' ;
@@ -106,7 +100,6 @@ class RsvpController extends Controller
                 ]);
 
         }
-
 
 
         $rsvp=rsvp::where('parent',$id)->get();
