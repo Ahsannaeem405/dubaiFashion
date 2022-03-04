@@ -6,12 +6,31 @@
         }
     </style>
 
-    <section class="mt-5 mb-5 pt-5">
-        <div class="container con_shadow p-5">
+    <section class="mt-1 mb-5 pt-5">
+        <div class="container con_shadow p-5 pt-1">
+            <div class="row text-center d-block mt-1">
+                <div class="col-lg-12 mt-1 mb-2 ">
+                    <h2>STEP 4/5 </h2>
+
+                </div>
+            </div>
+
+            <div class="row text-center d-block">
+                <div class="col-lg-12 my-5 mb-2 ">
+                    <h4>Please help us identify your profile by filling up the form below.
+                        Kindly note that filling inaccurate information will result in
+                        declining your reservation.</h4>
+
+
+                </div>
+            </div>
+
+
+
+
+
             <h3 class="text-center">{{$heading->heading}}</h3>
-            <p class="p1">IMPORTANT NOTE:</p>
-            <p class="p1">Please fill in all the information below to help us identify your profile. We will review the application and confirm your attendance after having reviewed your data.</p>
-            <p class="p1">Kindly provide true and accurate information. Our team carefully reviews each profile and wrongful applications will not be confirmed.</p>
+
             <form action="{{url('submit/data')}}" id="myForm" method="post">
                 @csrf
                 <div id="userform" class="row pt-3">
@@ -30,7 +49,7 @@
                         <input type="text" class="mt-2 form-control required" name="email[]" >
 
                     </div>
-                    <div class="col-md-6 col-12 pt-3">
+                    <div class="col-md-12 col-12 pt-3">
                         <label for=""><b><span class="text-danger">*</span>&nbsp;Phone</b></label><br>
                         <input id="phone2" value="{{$num}}" name="phone[]" class="form-control required" type="tel" >
                         <span id="valid-msg" class="hide">Valid</span>
@@ -62,8 +81,6 @@
                             <input type="text" class="form-control" name="code[]" >
                         </div>
 
-                        <i class="p1">* Are you attending with someone who has already registered? Please mention their name below to ensure your seats are assigned together. Ps. If you want to attend with another guest please ask them to rsvp. Plus 1 is not accepted
-                            unless the name is on the list.</i>
 
 
                     </div>
@@ -72,10 +89,10 @@
                 <div id="append" class="w-100 row"></div>
 
                     <div class="col-md-12 col-12 pt-3" style="text-align: center">
-                  <button class="btn btn-primary" type="button" id="someone">Add more guests</button>
+                  <button class="btn btn-secondary w-100" type="button" id="someone">Add more guests</button>
                     </div>
                     <div class="col-md-12 col-12 pt-3 text-right">
-                        <a > <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3"><b>Next</b> </button></a>
+                        <a> <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3 w-100" style="background-color: black"><b>Next</b> </button></a>
                     </div>
 
 

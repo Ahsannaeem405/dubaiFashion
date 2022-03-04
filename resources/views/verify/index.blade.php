@@ -16,7 +16,26 @@
 
                 <div class="row text-center d-block">
                     <div class="col-lg-12 mt-5 mb-2 ">
-                        <h2>Enter Your Phone Number For Verification </h2>
+                        <h4>Thank you for choosing to register to attend the
+                            Women’s Arab Fashion Week for FW22/23 </h4>
+
+                    </div>
+                </div>
+
+
+                <div class="row text-center d-block my-3">
+                    <div class="col-lg-12 mt-5 mb-2 ">
+                        <h2>STEP 1/5 </h2>
+
+                    </div>
+                </div>
+
+
+
+                <div class="row text-center d-block">
+                    <div class="col-lg-12 mt-5 mb-2 ">
+                        <h4>To start the process please enter your phone number for
+                            verification reasons, you will receive an OTP code by SMS.</h4>
 
                     </div>
                 </div>
@@ -24,13 +43,19 @@
                 <form action="{{url('send/sms/code')}}" method="post">
                     @csrf
                     <div class="row ">
-                        <div class="col-lg-12 mb-2 p-4" style="">
 
 
-                            <input id="phone" name="phone" style="width: 100%" class="form-control" type="tel" required>
+                        <div class="col-lg-12 mt-2">
 
-
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend " style="height: 38px">
+                                    <div class="input-group-text">UAE</div>
+                                </div>
+                                <input  name="phone" style="height: 38px;"  value="+971" id="inlineFormInputGroup" class="form-control" type="tel" required>
+                            </div>
                         </div>
+
+
 
 
 
@@ -38,18 +63,13 @@
                     </div>
 
 
-                    <div class="row  ">
-                        <div class="col-lg-6 mt-5 mb-3">
-
-{{--                            <span>Didn't get a code? <a  href="{{url('verify/email/resend')}}" style="color: green">Resend</a></span>--}}
+                    <div class="row">
 
 
-                        </div>
 
+                        <div class="col-lg-12  mb-3 text-right">
 
-                        <div class="col-lg-6 mt-5 mb-3 text-right">
-
-                            <button type="submit" class="btn btn-success ">Submit</button>
+                            <button type="submit" class="btn btn-success w-100 " style="border:none;background-color: black">Submit</button>
 
 
                         </div>

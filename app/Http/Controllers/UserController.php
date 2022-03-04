@@ -58,8 +58,15 @@ class UserController extends Controller
     public function final(Request $request)
     {
 
+        if ($request->types=='yes')
+        {
+            $phone = \Session::put('phone',$request->phone);
+        }
+        else{
+            $phone = \Session::put('phone',$request->phone2);
+        }
         $phone = \Session::put('phonestep',true);
-        $phone = \Session::put('phone',$request->phone);
+
 
 
 return redirect('/');
@@ -129,7 +136,7 @@ return redirect('/');
 if($request->eventId==null)
 {
 
-    return back()->with('error','please select event for booking');
+    return back()->with('error','PLEASE SELECT EVENT FOR BOOKING');
 }
 else{
     foreach ($request->eventId as $eve)
@@ -150,7 +157,7 @@ else{
     }
 
     \Session::flush();
-    return redirect('/')->with('success','Booking request send successfully!');
+    return redirect('/')->with('success','THANK YOU FOR REGISTERING');
 }
 
 

@@ -9,8 +9,19 @@
             transform: scale(1.5);
         }
     </style>
-    <div>
+    <div class=" text-center d-block mt-5">
+        <div class="col-lg-12 mt-1 mb-2 ">
+            <h2>STEP 5/5 </h2>
 
+        </div>
+    </div>
+
+    <div class=" text-center d-block">
+        <div class="col-lg-12 my-5 mb-2 ">
+            <h4>Now select the shows or events you’d like to attend.</h4>
+
+
+        </div>
     </div>
     <form action="{{url('submit/event')}}" method="post">
         @csrf

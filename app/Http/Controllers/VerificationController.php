@@ -107,17 +107,17 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-     //  dd($code);
+      //dd($code);
         if ($code==$request->code)
         {
 
             \Session::put('verification',true);
-            return redirect('/')->with('success','verification successfully');
+            return redirect('/')->with('success','VERIFICATION SUCCESSFUL');
         }
 
         else
         {
-            return back()->with('error','invalid code');
+            return back()->with('error','INVALID CODE');
         }
 
     }
