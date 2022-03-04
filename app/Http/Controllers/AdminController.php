@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\event;
 use App\Models\eventBooking;
+use App\Models\rsvp;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user=User::where('role','admin')->count();
+        $user=rsvp::all()->count();
         $event=event::all()->count();
         $booking=eventBooking::all()->count();
         $counter=User::where('role','counter')->count();
