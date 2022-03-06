@@ -29,7 +29,7 @@
 
 
 
-{{--            <h3 class="text-center">{{$heading->heading}}</h3>--}}
+            {{--            <h3 class="text-center">{{$heading->heading}}</h3>--}}
 
             <form action="{{url('submit/data')}}" id="myForm" method="post">
                 @csrf
@@ -86,14 +86,14 @@
                     </div>
                 </div>
 
-                <div id="append" class="w-100 row"></div>
+                <div id="append" class="w-100 row m-0"></div>
 
-                    <div class="col-md-12 col-12 pt-3" style="text-align: center">
-                  <button class="btn btn-secondary w-100" type="button" id="someone">Add more guests</button>
-                    </div>
-                    <div class="col-md-12 col-12 pt-3 text-right">
-                        <a> <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3 w-100" style="background-color: black"><b>Next</b> </button></a>
-                    </div>
+                <div class="col-md-12 col-12 pt-3" style="text-align: center">
+                    <button class="btn btn-secondary w-100" type="button" id="someone">Add more guests</button>
+                </div>
+                <div class="col-md-12 col-12 pt-3 text-right">
+                    <a> <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3 w-100" style="background-color: black"><b>Next</b> </button></a>
+                </div>
 
 
 
@@ -105,51 +105,67 @@
 
     <script>
         $(document).ready(function(){
-
+            var i=1;
             $("#someone").click(function () {
                 var html=$("#userform").html();
-               $("#append").append(html);
+
+                var html = '<div class="row w-100 guest'+i+'">';
+                html += '<div class="col-lg-12 w-100 text-center my-4 d-flex justify-content-between">' +
+                    '<h3 class="m-auto" >Guest Details</h3>' +
+                    '<i class="fa fa-trash del" del="'+i+'" style="color: red;cursor: pointer"></i>'+
+                    '</div>';
+                html += $('#userform').html();
+                html += '</div>';
+
+                $("#append").append(html);
+                i++;
 
             });
-        $("#submitdata").click(function () {
-            var valid = true;
-            $.each($(".required"), function (index, value) {
-               // alert($(this).val());
-                if(!$(this).val()){
-                    valid = false;
+            $(document).on('click','.del',function () {
 
-                    $(this).addClass('error');
-                }
-              else  {
-                    $(this).removeClass('error');
-                }
+                var id=$(this).attr('del');
+                $('.guest'+id).remove();
             });
 
-            var insta = $(".insta");
-            var linkedin = $(".linkedin");
+            $("#submitdata").click(function () {
+                var valid = true;
+                $.each($(".required"), function (index, value) {
+                    // alert($(this).val());
+                    if(!$(this).val()){
+                        valid = false;
 
-            for(var i = 0; i < insta.length; i++){
-            var val1=  $(insta[i]).val();
-            var val2=  $(linkedin[i]).val();
-
-            if(val1=='' && val2=='')
-            {
-                swal("Please provide atleast one social link of each user", "", "error", {
-                    button: "Close",
+                        $(this).addClass('error');
+                    }
+                    else  {
+                        $(this).removeClass('error');
+                    }
                 });
-               valid=false;
-            }
-            }
 
-            if(valid==false){
-                event.preventDefault();
-            }
+                var insta = $(".insta");
+                var linkedin = $(".linkedin");
+
+                for(var i = 0; i < insta.length; i++){
+                    var val1=  $(insta[i]).val();
+                    var val2=  $(linkedin[i]).val();
+
+                    if(val1=='' && val2=='')
+                    {
+                        swal("Please provide atleast one social link of each user", "", "error", {
+                            button: "Close",
+                        });
+                        valid=false;
+                    }
+                }
+
+                if(valid==false){
+                    event.preventDefault();
+                }
 
 
 
 
 
-        });
+            });
         });
 
     </script>
