@@ -99,7 +99,7 @@
 
 
         <div class="col-lg-12 text-center my-5">
-            <button class="btn btn-primary " type="submit" style="width: 120px;height: 70px">SUBMIT</button>
+            <button class="btn btn-dark w-100"  type="submit" style="background-color: black">
         </div>
         </div>
         </div>
