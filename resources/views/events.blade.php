@@ -70,7 +70,7 @@
                             @if($img!='')<div class="item">
                                             <img class=""
                                                  src="{{asset('uploads/appsetting/'.$img.'')}}"
-                                                 style="width: 100%;"
+                                                 style="width: 100%;height:     250px"
                                                  alt="">
                                         </div>
 
