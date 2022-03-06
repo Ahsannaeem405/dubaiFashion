@@ -29,7 +29,7 @@
 
 
 
-            <h3 class="text-center">{{$heading->heading}}</h3>
+{{--            <h3 class="text-center">{{$heading->heading}}</h3>--}}
 
             <form action="{{url('submit/data')}}" id="myForm" method="post">
                 @csrf
