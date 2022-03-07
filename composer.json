@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "twilio/sdk": "^6.35",
-        "vonage/client": "^2.4"
+        "vonage/client": "^2.4",
+        "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
