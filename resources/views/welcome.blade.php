@@ -88,13 +88,13 @@
 
                 <div id="append" class="w-100 row m-0"></div>
 
-                <div class="col-md-12 col-12 pt-3" style="text-align: center">
-                    <button class="btn btn-secondary w-100" type="button" id="someone">Add more guests</button>
-                </div>
+
                 <div class="col-md-12 col-12 pt-3 text-right">
                     <a> <button type="submit" id="submitdata" class="btn btn-dark pl-3 pr-3 w-100" style="background-color: black"><b>Next</b> </button></a>
                 </div>
-
+                <div class="col-md-12 col-12 pt-3" style="text-align: center">
+                    <button class="btn btn-secondary w-100" type="button" id="someone">Add more guests</button>
+                </div>
 
 
             </form>
@@ -106,13 +106,14 @@
     <script>
         $(document).ready(function(){
             var i=1;
+            var special = ['zeroth','First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth', 'Eleventh', 'Twelfth', 'Thirteenth', 'Fourteenth', 'Fifteenth', 'Sixteenth', 'Seventeenth', 'Eighteenth', 'Nineteenth','Twentieth'];
             $("#someone").click(function () {
                 var html=$("#userform").html();
 
-                var html = '<div class="row w-100 guest'+i+'">';
-                html += '<div class="col-lg-12 w-100 text-center my-4 d-flex justify-content-between">' +
-                    '<h3 class="m-auto" >Guest Details</h3>' +
-                    '<i class="fa fa-trash del" del="'+i+'" style="color: red;cursor: pointer"></i>'+
+                var html = '<div class="row w-100 m-0 guest'+i+'">';
+                html += '<div class="col-lg-12 w-100 text-center my-4 d-flex justify-content-between m-0 p-0">' +
+                    '<h3 class="m-auto" >'+special[i]+' Guest Details</h3>' +
+                    '<i class="fa fa-trash del" del="'+i+'" style="color: red;cursor: pointer"> <span style="">Remove Guest</span> </i>'+
                     '</div>';
                 html += $('#userform').html();
                 html += '</div>';

@@ -31,75 +31,76 @@
             <div class="row ">
 
                 @foreach($events as $title)
-                @foreach($title as $event)
+                    @foreach($title as $event)
 
-                    <div class="row w-100 m-0 mb-2">
-
-
-
-                        <div class="col-lg-2 p-0 pt-5 text-center pr-1" style="">
+                        <div class="row w-100 m-0 mb-2">
 
 
-                            <h3 class="w-100 d-flex m-0">
-                            <div class="m-auto d-flex"><input class="" @if(count($event->eventBook)==count($search)) checked disabled
-                                        @endif   type="checkbox" value="{{$event->id}}" name="eventId[]"
-                                        id="eventid{{$event->id}}">
 
-                                <p class=" ml-2">{{$event->title}}</p></div>
-                                </h3>
-                            <h5 class="w-100">{{$event->start}} </h5>
-                            <h5 class="w-100">{{$event->starttime}} - {{$event->endtime}} </h5>
+                            <div class="col-lg-12 p-3" style="">
 
 
-                        </div>
-
-                        <div class="col-lg-2 p-0 text-center "
-                             style="display: flex;align-items: center;border: 2px solid black">
-
-                            <h2 class="w-100">{{$event->name}} </h2>
+                                <h4 class="w-100 ml-4 m-0">
 
 
-                        </div>
+                                    {{$event->title}}
+                                </h4>
+                                <div class="d-flex " style="align-items: center">
+                                    <input class="" @if(count($event->eventBook)==count($search)) checked disabled
+                                           @endif   type="checkbox" value="{{$event->id}}" name="eventId[]"
+                                           id="eventid{{$event->id}}">
 
-                        @php
-                            $imgs=explode(',',$event->image);
-                        @endphp
-                        <div class="col-lg-8">
-                        <div class="owl-carousel owl-theme">
-                        @foreach($imgs as $img)
-                            @if($img!='')<div class="item">
+                                    <h5  class="ml-2 mt-1">{{$event->name}} </h5>
+
+
+                                </div>
+                                <h5 class="w-100 ml-4">{{\Carbon\Carbon::parse($event->starttime)->format('h:i A')}}  </h5>
+
+
+
+                            </div>
+
+
+
+                            @php
+                                $imgs=explode(',',$event->image);
+                            @endphp
+                            <div class="col-lg-12">
+                                <div class="owl-carousel owl-theme">
+                                    @foreach($imgs as $img)
+                                        @if($img!='')<div class="item">
                                             <img class=""
                                                  src="{{asset('uploads/appsetting/'.$img.'')}}"
-                                                 style="width: 100%;height:     auto"
+                                                 style="width: 100%;height:     auto;"
                                                  alt="">
                                         </div>
 
 
 
 
-                            @endif
+                                        @endif
 
 
-                        @endforeach
+                                    @endforeach
+                                </div>
+                            </div>
+
+
                         </div>
-                        </div>
-
-
-                    </div>
-                        @endforeach
+                    @endforeach
 
                     <div style="height: 2px;background-color: #ccc8c8" class="w-100 my-2"></div>
 
-                        @endforeach
-                    </div>
+                @endforeach
             </div>
+        </div>
 
 
 
 
 
         <div class="col-lg-12 text-center my-5">
-            <button class="btn btn-dark w-100"  type="submit" style="background-color: black">
+            <button class="btn btn-dark w-100"  type="submit" style="background-color: black">SUBMIT</button>
         </div>
         </div>
         </div>
