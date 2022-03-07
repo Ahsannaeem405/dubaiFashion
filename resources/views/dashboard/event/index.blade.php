@@ -76,7 +76,7 @@
                             </div>
 
                             <div class="col-lg-6 mt-2">
-                                <lable class="label">Event end time</lable>
+                                <lable class="label">Event Check-in time</lable>
                                 <input type="time" class="form-control" name="endtime" required>
                             </div>
 
@@ -119,7 +119,8 @@
                                                 <th>Title</th>
                                                 <th>Name</th>
                                                 <th>Event date</th>
-                                                <th>Event Time</th>
+                                                <th> start time</th>
+                                                <th> check-in time</th>
                                                 <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
@@ -133,7 +134,8 @@
                                                     <td>{{$event->title}}</td>
                                                     <td>{{$event->name}}</td>
                                                     <td>{{$event->start}}</td>
-                                                    <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>
+                                                    <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} </td>
+                                                    <td> {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>
                                                     <td>{{$event->desc}}</td>
 
                                                     <td>
@@ -174,9 +176,9 @@
 
                                                                         <div class="col-lg-12 text-center">
 
-                                                                           @php
-                                                                             $imgs=explode(',',$event->image);
-                                                                           @endphp
+                                                                            @php
+                                                                                $imgs=explode(',',$event->image);
+                                                                            @endphp
                                                                             @foreach($imgs as $img)
                                                                                 @if($img!='')
                                                                                     <img class="mb-1"
@@ -224,7 +226,7 @@
 
 
                                                                         <div class="col-lg-6 mt-2">
-                                                                            <lable class="label">Event end time</lable>
+                                                                            <lable class="label">Event Check-in time</lable>
                                                                             <input type="time" class="form-control"
                                                                                    value="{{$event->endtime}}"
                                                                                    name="endtime" required>

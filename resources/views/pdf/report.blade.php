@@ -12,75 +12,100 @@
 <table class="table" style="width: 100%;padding:20px">
     <thead>
     <tr>
-        <th scope="col" style="width: 50%;background-color: black;border-radius: 15px;"><img
+        <th scope="col" style="width: 100%;background-color: black;border-radius: 15px;"><img
                 src="image/png10.png" alt="" style="width: 250px;height: 250px;">
         </th>
-        <th scope="col" style="width: 50%;color: darkgray;  padding-top: 30px;text-align: center;padding-left: 150px;">
 
-            <img class="" style="width: 150px;"
-                 src="https://chart.googleapis.com/chart?chs=186x189&cht=qr&chl={{$host}}&choe=UTF-8"
-                 title="ACD Deposit Address"/>
-
-
-        </th>
 
 
     </tr>
     </thead>
 
 </table>
-
-
-<table class="table" style="width: 100%;border-collapse: collapse;">
-
-    <tbody>
-
-
-
-    @foreach($events as $event)
-
-
-        <tr>
-            <td class="td_border th_bold" style="width: 50%;text-align: left">
-
-           <div style="margin-left: 100px">
-               <p style="margin-bottom: 0px;"> {{$event->event->start}}</p>
-               <p  style="margin-top: 2px;"> CHECK-IN: {{Carbon\Carbon::parse($event->event->starttime)->format('h:i a')}}</p>
-               <br>
-               <p style="margin: 2px" class="font-weight-bold">SHOWS</p>
-            <p style="margin-top: 2px"> {{$event->event->title}}   {{Carbon\Carbon::parse($event->event->starttime)->format('h:i a')}} - {{Carbon\Carbon::parse($event->event->starttime)->format('h:i a')}}</p>
-
-
-
-           </div>
-
-            </td>
-
-            <td class="td_border th_bold" style="width: 20%;">  {{$event->seat}}</td>
-        </tr>
-    <tr>
-      <td colspan="2">
-          <hr>  </td>
-
-    </tr>
-    @endforeach
-
-
-
-    </tbody>
-</table>
-
 
 <table class="table" style="width: 100%;margin-bottom: 20px;margin-top: 20px">
     <thead>
     <tr>
         <th style="text-align: left;">
-            <h3 style="margin-left: 100px">You are kindly requested to arrive on time to enjoy your allocated seat.</h3>
+            <p style="margin-left: 100px;margin-bottom: 0px;margin-top: 0px">NAME: {{$rsvp->f_name.' '.$rsvp->l_name}}</p>
+            <p style="margin-left: 100px;margin-bottom: 0px;margin-top: 0px">You are kindly requested to arrive on time to enjoy your allocated seat.</p>
 
     </tr>
     </thead>
 
 </table>
+
+<div class="" style="width: 100%;">
+
+
+    @foreach($events as $event)
+        <div style="width: 49%;display: inline-block">
+            <table class=table"" style="width: 100%;border-collapse: collapse;margin: 0px;">
+
+                <tbody>
+
+
+
+
+
+                <tr style="width: 100%;">
+                    <td class="td_border th_bold" style="width: 100%;text-align: left">
+
+                        <div style="margin-left: 100px">
+                            <p style="margin-bottom: 0px;"> {{$event->event->title}}</p>
+                            <p  style="margin-top: 2px;"> CHECK-IN: {{Carbon\Carbon::parse($event->event->endtime)->format('h:i A')}}</p>
+
+                            <p style="margin-top: 2px;line-height: 20px;color: #d9d2d2"> {!! nl2br($event->event->desc) !!}   </p>
+
+
+
+                        </div>
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    @endforeach
+
+
+
+</div>
+<table class="table" style="width: 100%;padding:20px;border: none"  cellspacing="0" cellpadding="0">
+    <thead>
+    <tr style="background-color: white">
+        <td scope="col" style="width: 80%;color: darkgray;  padding: 20px;text-align: left;">
+
+            <p>location</p>
+            <p>locationnote</p>
+            <p>locationnote</p>
+
+
+
+        </td>
+
+        <td style="width: 20%;;text-align: center">
+            <img class="" style="width: 70%;"
+                 src="https://chart.googleapis.com/chart?chs=186x189&cht=qr&chl={{$host}}&choe=UTF-8"
+                 title="ACD Deposit Address"/>
+
+        </td>
+
+
+
+    </tr>
+    </thead>
+
+</table>
+
+
 
 
 <style>
