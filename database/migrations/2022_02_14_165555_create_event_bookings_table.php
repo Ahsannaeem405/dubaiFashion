@@ -17,7 +17,7 @@ class CreateEventBookingsTable extends Migration
             $table->id();
             $table->integer('event_id')->nullable();
             $table->integer('user_id')->nullable();
-            $table->text('status')->default('pending');
+            $table->string('status')->default('pending');
             $table->integer('send')->default(0);
             $table->text('seat')->nullable();
             $table->integer('join')->default(0);
