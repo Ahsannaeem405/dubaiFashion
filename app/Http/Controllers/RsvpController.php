@@ -34,6 +34,12 @@ class RsvpController extends Controller
 
         return view('dashboard.rsvp.rsvpEvent',compact('rsvp','events','travelling','id'));
     }
+    public function rsvpDelete(rsvp $id)
+    {
+        $id->delete();
+        eventBooking::where('user_id',$id)->delete();
+        return back()->with('success','Rsvp deleted successfully');
+    }
 
     public function rsvpStatus($id,$staus,Request $request)
     {
@@ -74,7 +80,7 @@ class RsvpController extends Controller
 
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
-         // return view('pdf.report',compact('host','events','rsvp'));
+        // return view('pdf.report',compact('host','events','rsvp'));
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
             $fileName = $rand . '.' . 'pdf' ;

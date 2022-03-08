@@ -107,7 +107,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-      //dd($code);
+  //    dd($code);
         if ($code==$request->code)
         {
 

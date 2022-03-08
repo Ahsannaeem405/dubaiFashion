@@ -46,6 +46,7 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
  //rsvp
     Route::get('/rsvp', [App\Http\Controllers\RsvpController::class, 'rsvp']);
     Route::get('/rsvp/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind']);
+    Route::get('/rsvp/delete/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpDelete']);
     Route::any('/rsvp/{id}/{status}', [App\Http\Controllers\RsvpController::class, 'rsvpStatus']);
     Route::any('send/pdf/{id}/', [App\Http\Controllers\RsvpController::class, 'rsvpSend']);
 

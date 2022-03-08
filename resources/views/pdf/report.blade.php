@@ -39,7 +39,7 @@
 
 
     @foreach($events as $event)
-        <div style="width: 49%;display: inline-block">
+        <div style="width: 50%;float: left">
             <table class=table"" style="width: 100%;border-collapse: collapse;margin: 0px;">
 
                 <tbody>
@@ -53,9 +53,10 @@
 
                         <div style="margin-left: 100px">
                             <p style="margin-bottom: 0px;"> {{$event->event->title}}</p>
-                            <p  style="margin-top: 2px;"> CHECK-IN: {{Carbon\Carbon::parse($event->event->endtime)->format('h:i A')}}</p>
+                            <p  style="margin-top: 2px;margin-bottom: 0px"> CHECK-IN: {{Carbon\Carbon::parse($event->event->endtime)->format('h:i A')}}</p>
+                            <p  style="margin-top: 2px;"> SEAT: {{$event->seat}}</p>
 
-                            <p style="margin-top: 2px;line-height: 20px;color: #d9d2d2"> {!! nl2br($event->event->desc) !!}   </p>
+                            <p style="margin-top: 2px;line-height: 20px;color: #d6d3d2"> {!! nl2br($event->event->desc) !!}   </p>
 
 
 
@@ -73,6 +74,9 @@
                 </tbody>
             </table>
         </div>
+
+
+
     @endforeach
 
 
@@ -81,11 +85,11 @@
 <table class="table" style="width: 100%;padding:20px;border: none"  cellspacing="0" cellpadding="0">
     <thead>
     <tr style="background-color: white">
-        <td scope="col" style="width: 80%;color: darkgray;  padding: 20px;text-align: left;">
+        <td scope="col" style="width: 80%;color: black;  padding: 20px;text-align: left;padding-top: 10px!important;">
 
-            <p>location</p>
-            <p>locationnote</p>
-            <p>locationnote</p>
+            <p>LOCATION: BUILDING 7, DUBAI DESIGN DISTRICT (d3)</p>
+            <p>Note: Please ensure that you arrive to the venue atleast 30 minutes before the show's schedule to enjoy your allocated seats.</p>
+            <p>P.S. Please ensure that you maintain social distance and wear face masks at all the times.</p>
 
 
 

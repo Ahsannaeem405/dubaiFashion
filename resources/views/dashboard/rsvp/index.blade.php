@@ -72,6 +72,7 @@
                                                     <td>
 
                                                         <a href="{{url('admin/rsvp/'.$rsvps->id.'')}}">  <i style="color: blueviolet" class="fa fa-database"></i></a>
+                                                        <a href="{{url('admin/rsvp/delete/'.$rsvps->id.'')}}">  <i style="color: red" class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
 
