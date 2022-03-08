@@ -43,7 +43,7 @@ class VerificationController extends Controller
 //                    'Body'=>$message,
 //                ]);
 
-            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$receiverNumber.'&message='.$message.'&sid=AD-ETCETERA&mtype=N&DR=Y');
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$receiverNumber.'&message='.$message.'&sid=AD-AFWxd3&mtype=N&DR=Y');
 
             if($msg->successful()!=true)
             {
@@ -85,7 +85,7 @@ class VerificationController extends Controller
 //                    'Body'=>$message,
 //                ]);
 
-            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$phone.'&message='.$message.'&sid=AD-ETCETERA&mtype=N&DR=Y');
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$phone.'&message='.$message.'&sid=AD-AFWxd3&mtype=N&DR=Y');
 
 
             if($msg->successful()!=true)
