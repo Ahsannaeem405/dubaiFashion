@@ -22,6 +22,16 @@ class RsvpController extends Controller
 
         return view('dashboard.rsvp.index',compact('rsvp'));
     }
+    public function rsvpList()
+    {
+
+        $rsvp=rsvp::whereHas('userEvent', function($q) {
+
+        })->where('parent',null)->get();
+
+
+        return view('dashboard.rsvpList.index',compact('rsvp'));
+    }
 
 
     public function rsvpFind($id)
@@ -33,6 +43,16 @@ class RsvpController extends Controller
 
 
         return view('dashboard.rsvp.rsvpEvent',compact('rsvp','events','travelling','id'));
+    }
+    public function rsvpFind2($id)
+    {
+        $rsvp=rsvp::find($id);
+        $events=eventBooking::where('user_id',$id)->with('event')->get();
+        $travelling=rsvp::with('userEvent')
+            ->where('parent',$id)->get();
+
+
+        return view('dashboard.rsvpList.rsvpEvent',compact('rsvp','events','travelling','id'));
     }
     public function rsvpDelete(rsvp $id)
     {
@@ -69,6 +89,7 @@ class RsvpController extends Controller
             $q->where('send',0)
             ->whereIn('status',['Approved']);
         })->with('event')->get();
+      //  dd($events);
 
         if (count($events)!=0)
         {
@@ -80,14 +101,17 @@ class RsvpController extends Controller
 
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
-        // return view('pdf.report',compact('host','events','rsvp'));
+  //   return view('pdf.report',compact('host','events','rsvp'));
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
             $fileName = $rand . '.' . 'pdf' ;
             $pdf->save($path  . $fileName);
 
-            Mail::to($email)->send(new result($rand));
 
+
+
+            Mail::to($email)->send(new result($rand));
+//dd($rand);
 
             $events=eventBooking::where('user_id',$id)->where(function($q) {
                 $q->where('send',0)
@@ -97,13 +121,13 @@ class RsvpController extends Controller
 
             $message="Test message";
             $phone=$rsvp->phone;
-            $msg=    \Http::
-            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-                ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
-                    'To'=>"whatsapp:$phone",
-                    'From'=>"whatsapp:+14155238886",
-                    'Body'=>$message,
-                ]);
+            // $msg=    \Http::
+            // withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+            //     ->asForm() ->post('https://api.twilio.com/2010-04-01/Accounts/ACd3ad0905b6eb4ccff2bb0e90c926485a/Messages.json',[
+            //         'To'=>"whatsapp:$phone",
+            //         'From'=>"whatsapp:+14155238886",
+            //         'Body'=>$message,
+            //     ]);
 
         }
 
@@ -142,13 +166,13 @@ foreach ($rsvp as $rsvp)
 
         $message="Test message";
         $phone=$rsvp->phone;
-        $msg=    \Http::
-        withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
-            ->asForm() ->post(env('TWELLO_URL'),[
-                'To'=>"whatsapp:$phone",
-                'From'=>"whatsapp:+14155238886",
-                'Body'=>$message,
-            ]);
+        // $msg=    \Http::
+        // withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
+        //     ->asForm() ->post(env('TWELLO_URL'),[
+        //         'To'=>"whatsapp:$phone",
+        //         'From'=>"whatsapp:+14155238886",
+        //         'Body'=>$message,
+        //     ]);
 
     }
 
@@ -158,8 +182,6 @@ foreach ($rsvp as $rsvp)
 
 
 }
-
-
 
 
 

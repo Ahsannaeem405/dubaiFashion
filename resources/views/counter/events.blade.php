@@ -8,9 +8,9 @@
             @foreach($events as $event)
                 <input type="checkbox" value="{{$event->id}}" style="display: none" name="eventId[]" id="eventid{{$event->id}}">
                 <div class="col-xl-4 col-lg-6  col-md-8 col-sm-8 col-12">
-                    <div class="group-card event{{$event->id}}_div mx-0 mx-sm-0">
-                        <div class="group-card-img">
-                            <img src="{{asset('uploads/appsetting/'.$event->image.'')}}" />
+                    <div class="group-card event{{$event->id}}_div mx-0 mx-sm-0"  style="height:300px">
+                        <div class="">
+                            
 
 
                                 <a class="rejis-btn event"  href="{{url('counter/scan/'.$event->id.'')}}" event="{{$event->id}}" status="0">
@@ -28,7 +28,7 @@
                                     <p><i class="far fa-calendar-alt mx-1"></i>{{$event->start}}</p>
                                 </div>
                                 <div class="col-8 ">
-                                    <p class="text-end"><i class="far fa-clock mx-1"></i>{{$event->starttime}} to {{$event->endtime}}</p>
+                                    <p class="text-end"><i class="far fa-clock mx-1"></i>Check-in {{$event->endtime}}</p>
                                 </div>
                                 <p class="event-dis mb-0 text-center pr-2 pl-2">
                                     {{$event->desc}}

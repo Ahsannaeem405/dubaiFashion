@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $hash=Hash::make('12345678');
+        $hash=Hash::make('PentaGrama_March');
         DB::table('users')->insert([
 
-            ['f_name' => "admin",'email'=>'admin@demo.com','password'=>''.$hash.'','role'=>'admin'],
+            ['f_name' => "admin",'email'=>'Info@ohvu.io','password'=>''.$hash.'','role'=>'admin'],
 
         ]);
         DB::table('settings')->insert([

@@ -10,7 +10,7 @@
         <div class="container con_shadow p-5 pt-1">
             <div class="row text-center d-block mt-1">
                 <div class="col-lg-12 mt-1 mb-2 ">
-                    <h2>STEP 4/5 </h2>
+                    <h2>STEP 3/4 </h2>
 
                 </div>
             </div>
@@ -73,6 +73,7 @@
                             <option value="Photographer">Photographer</option>
                             <option value="Celebrity">Celebrity or Influencer</option>
                             <option value="Press">Guest</option>
+                            <option value="Press">Buyer</option>
 
                         </select><br>
 

@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/cls', function() {
+    $run = Artisan::call('optimize:clear');
+
+    Session::flush();
+    return 'FINISHED';
+});
+
+
 
 
 
@@ -46,6 +54,7 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
  //rsvp
     Route::get('/rsvp', [App\Http\Controllers\RsvpController::class, 'rsvp']);
     Route::get('/rsvp/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind']);
+
     Route::get('/rsvp/delete/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpDelete']);
     Route::any('/rsvp/{id}/{status}', [App\Http\Controllers\RsvpController::class, 'rsvpStatus']);
     Route::any('send/pdf/{id}/', [App\Http\Controllers\RsvpController::class, 'rsvpSend']);
@@ -54,6 +63,10 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/event/history', [App\Http\Controllers\EventController::class, 'eventHistory']);
     Route::get('/event/history/{id}', [App\Http\Controllers\EventController::class, 'eventHistoryfind']);
 
+    //list
+
+        Route::get('rsvp/history/list/all', [App\Http\Controllers\RsvpController::class, 'rsvpList']);
+    Route::get('/rsvp/view/list/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind2']);
 });
 
 Route::prefix('/counter')->middleware(['auth','counter'])->group(function () {

@@ -49,9 +49,9 @@
 
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend " style="height: 38px">
-                                    <div class="input-group-text">UAE</div>
+
                                 </div>
-                                <input  name="phone" style="height: 38px;"  value="+971" id="inlineFormInputGroup" class="form-control" type="tel" required>
+                                <input id="phone"  name="phone" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="tel" required>
                             </div>
                         </div>
 

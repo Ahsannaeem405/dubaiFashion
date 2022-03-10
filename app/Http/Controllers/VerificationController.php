@@ -33,7 +33,7 @@ class VerificationController extends Controller
             \Session::put('code',$code);
             \Session::put('phone',$request->phone);
             $receiverNumber = $request->phone;
-            $message = "Your verification code is $code";
+            $message = "$code is the OTP to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
 
 //            $msg=    \Http::
 //            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
@@ -75,7 +75,7 @@ class VerificationController extends Controller
             $phone=  \Session::get('phone');
 
 
-            $message = "Your verification code is $code";
+            $message = "$code is the OTP to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
 
 //            $msg=    \Http::
 //            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
@@ -107,7 +107,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-  //    dd($code);
+    // dd($code);
         if ($code==$request->code)
         {
 

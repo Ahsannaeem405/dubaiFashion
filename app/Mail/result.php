@@ -29,6 +29,7 @@ class result extends Mailable
      */
     public function build()
     {
-        return $this->view('pdf.index')->subject('Event Detail')->attach(("pdf/$this->rand.pdf"));
+               return $this->view('pdf.index')->subject('Here is your ticket to attend Arab Fashion Week x d3 for Womenswear FW22/23')->attach(("pdf/$this->rand.pdf"));
+
     }
 }

@@ -12,7 +12,7 @@ class counterUserController extends Controller
     public function index() {
 
         $date=Carbon::now();
-        $events = event::whereDate('start','=',$date)->get();
+        $events = event::get();
 
         return view('counter.events',compact('events'));
     }

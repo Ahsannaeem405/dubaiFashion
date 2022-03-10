@@ -50,7 +50,7 @@ class UserController extends Controller
 
        // return view('welcome',compact('num','heading'));
 
-        return view('verify.index');
+        return view('verify.index2');
 
 
     }
