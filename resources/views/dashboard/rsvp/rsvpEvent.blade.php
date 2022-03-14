@@ -101,6 +101,12 @@
                                     <lable class="font-weight-bold">{{$rsvp->linkedin}}</lable>
                                 </div>
 
+                                <div class="col-lg-3 mb-2">
+
+                                    <lable>company:</lable>
+                                    <lable class="font-weight-bold">{{$rsvp->company}}</lable>
+                                </div>
+
 
 
                             </div>
@@ -270,6 +276,11 @@
 
                                         <lable>LinkedIn:</lable>
                                         <lable class="font-weight-bold">{{$rsvp->linkedin}}</lable>
+                                    </div>
+                                    <div class="col-lg-3 mb-2">
+
+                                        <lable>company:</lable>
+                                        <lable class="font-weight-bold">{{$rsvp->company}}</lable>
                                     </div>
 
 

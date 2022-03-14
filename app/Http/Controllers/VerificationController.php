@@ -17,7 +17,7 @@ class VerificationController extends Controller
 
     public function send2(Request $request)
     {
-        \Session::put('phone',$request->phone);
+        \Session::put('phone',$request->phonecode.$request->phone);
 
         \Session::put('verification',true);
         return redirect('/');
@@ -31,8 +31,8 @@ class VerificationController extends Controller
 
             $code=rand(100000, 999999);
             \Session::put('code',$code);
-            \Session::put('phone',$request->phone);
-            $receiverNumber = $request->phone;
+            \Session::put('phone',$request->phonecode.$request->phone);
+            $receiverNumber = $request->phonecode.$request->phone;
             $message = "$code is the OTP to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
 
 //            $msg=    \Http::

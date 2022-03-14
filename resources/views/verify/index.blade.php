@@ -52,6 +52,7 @@
 
                                 </div>
                                 <input id="phone"  name="phone" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="tel" required>
+                                <input id="phonecode"  name="phonecode" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="text" required>
                             </div>
                         </div>
 
@@ -88,7 +89,7 @@
 
             setTimeout(function() {
                 var countryCode = $('.selected-dial-code').text();
-                $("#phone").val(countryCode);
+                $("#phonecode").val(countryCode);
             }, 2000);
         });
     </script>

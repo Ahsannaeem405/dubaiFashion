@@ -10,18 +10,29 @@
     @page {
         margin: 0;
     }
-    p{
-        font-weight: bolder;
-    }
+
     @font-face {
-        font-family: 'Arial' !important;
+        font-family: myArial;
+        font-weight: bold;
+        src: url('/font/myfont.ttf') format('truetype');
     }
+
+
     body {
-        font-family: Arial !important;
+        font-family: myArial;
+
     }
-    table{
-        font-family: Arial !important; 
+
+    p {
+        font-family: 'myArial';
+
     }
+
+
+
+    /*table{*/
+    /*    font-family: Arial !important;*/
+    /*}*/
 
 </style>
 
@@ -32,9 +43,9 @@
     <thead>
     <tr>
         <th scope="col" style="width: 100%;background-color: black;border-radius: 15px;"><img
-                src="{{'data:image/png;base64,'.base64_encode(file_get_contents('image/mainlogo2.png'))}}" alt="" style="width: 100%;height: 250px;">
+                src="{{'data:image/png;base64,'.base64_encode(file_get_contents('image/mainlogo2.png'))}}" alt=""
+                style="width: 100%;height: 250px;">
         </th>
-
 
 
     </tr>
@@ -46,8 +57,10 @@
     <thead>
     <tr>
         <th style="text-align: left;">
-            <p style="margin-left: 50px;margin-bottom: 0px;margin-top: 0px">NAME: {{$rsvp->f_name.' '.$rsvp->l_name}}</p>
-            <p style="margin-left: 50px;margin-bottom: 0px;margin-top: 0px">You are kindly requested to arrive on time to enjoy your allocated seat.</p>
+            <p style="margin-left: 50px;margin-bottom: 0px;margin-top: 0px">
+                NAME: {{$rsvp->f_name.' '.$rsvp->l_name}}</p>
+            <p style="margin-left: 50px;margin-bottom: 0px;margin-top: 0px">You are kindly requested to arrive on time
+                to enjoy your allocated seat.</p>
 
     </tr>
     </thead>
@@ -64,19 +77,16 @@
                 <tbody>
 
 
-
-
-
                 <tr style="width: 100%;">
                     <td class="td_border th_bold" style="width: 100%;text-align: left">
 
                         <div style="margin-left: 50px">
                             <p style="margin-bottom: 0px;font-weight: bolder"> {{$event->event->title}}</p>
-                            <p  style="margin-top: 2px;margin-bottom: 0px;font-weight: bolder"> CHECK-IN: {{Carbon\Carbon::parse($event->event->endtime)->format('h:i A')}}</p>
-                            <p  style="margin-top: 2px;font-weight: bolder"> SEAT: {{$event->seat}}</p>
+                            <p style="margin-top: 2px;margin-bottom: 0px;font-weight: bolder">
+                                CHECK-IN: {{Carbon\Carbon::parse($event->event->endtime)->format('h:i A')}}</p>
+                            <p style="margin-top: 2px;font-weight: bolder"> SEAT: {{$event->seat}}</p>
 
                             <p style="margin-top: 2px;line-height: 18px;color: #817875;font-weight: 100;font-size: 14px;"> {!! nl2br($event->event->desc) !!}   </p>
-
 
 
                         </div>
@@ -85,9 +95,6 @@
 
 
                 </tr>
-
-
-
 
 
                 </tbody>
@@ -99,17 +106,16 @@
     @endforeach
 
 
-
 </div>
-<table class="table" style="width: 100%;padding:20px;border: none"  cellspacing="0" cellpadding="0">
+<table class="table" style="width: 100%;padding:20px;border: none" cellspacing="0" cellpadding="0">
     <thead>
     <tr style="background-color: white">
         <td scope="col" style="width: 80%;color: black;  padding: 20px;text-align: left;padding-top: 10px!important;">
 
             <p>LOCATION: BUILDING 7, DUBAI DESIGN DISTRICT (d3)</p>
-            <p>Note: Please ensure that you arrive to the venue atleast 30 minutes before the show's schedule to enjoy your allocated seats.</p>
+            <p>Note: Please ensure that you arrive to the venue at least 30 minutes before the show's schedule to enjoy
+                your allocated seats.</p>
             <p>P.S. Please ensure that you maintain social distance and wear face masks at all the times.</p>
-
 
 
         </td>
@@ -122,13 +128,10 @@
         </td>
 
 
-
     </tr>
     </thead>
 
 </table>
-
-
 
 
 <style>
@@ -168,20 +171,15 @@
     <thead>
     <tr>
         <th scope="col" style="width: 100%;text-align: center;">
-            <img src="{{'data:image/png;base64,'.base64_encode(file_get_contents('image/allcompanylogo.png'))}}" style="width: 100%" alt="">
+            <img src="{{'data:image/png;base64,'.base64_encode(file_get_contents('image/allcompanylogo.png'))}}"
+                 style="width: 100%" alt="">
         </th>
     </tr>
-
-
 
 
     </thead>
 
 </table>
-
-
-
-
 
 
 </body>

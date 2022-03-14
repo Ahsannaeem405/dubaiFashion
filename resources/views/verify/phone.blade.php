@@ -64,6 +64,8 @@
                                 </div>
                                 <input  name="phone2" style="height: 38px;"  id="phone"
                                        class="form-control" type="tel" >
+                                <input  name="phonecode" style="height: 38px;"  id="phonecode"
+                                        class="form-control" type="hidden" >
                             </div>
                         </div>
 
@@ -105,7 +107,7 @@
 
                 setTimeout(function() {
                     var countryCode = $('.selected-dial-code').text();
-                    $("#phone").val(countryCode);
+                    $("#phonecode").val(countryCode);
                 }, 2000);
 
 

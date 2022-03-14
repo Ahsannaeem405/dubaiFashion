@@ -82,6 +82,11 @@
                             <input type="text" class="form-control" name="code[]" >
                         </div>
 
+                        <div class="col-md-12 col-12 mt-3 p-0">
+                            <label for=""><b>Company Name(Optional)</b></label>
+                            <input type="text" class="form-control" name="company[]" >
+                        </div>
+
 
 
                     </div>

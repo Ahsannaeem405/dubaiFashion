@@ -12,6 +12,36 @@ use PDF;
 
 class RsvpController extends Controller
 {
+
+    public function rsvpReport()
+    {
+        $rsvp=rsvp::all();
+
+        return view('dashboard.rsvpReport.index',compact('rsvp'));
+    }
+    public function rsvpReportDetail($id)
+    {
+
+        $rsvp=rsvp::find($id);
+        $events=eventBooking::where('user_id',$id)->with('event')->get();
+
+
+        return view('dashboard.rsvpReport.detail',compact('rsvp','events'));
+    }
+
+    public function eventReport()
+    {
+        $events=event::all();
+        return view('dashboard.eventReport.index',compact('events'));
+    }
+    public function eventReportDetail($id)
+    {
+
+        $events=eventBooking::where('event_id',$id)->where('status','Approved')->get();
+        return view('dashboard.eventReport.detail',compact('events'));
+    }
+
+
     public function rsvp()
     {
         $rsvp=rsvp::whereHas('userEvent', function($q) {
@@ -56,8 +86,9 @@ class RsvpController extends Controller
     }
     public function rsvpDelete(rsvp $id)
     {
+
         $id->delete();
-        eventBooking::where('user_id',$id)->delete();
+        eventBooking::where('user_id',$id->id)->delete();
         return back()->with('success','Rsvp deleted successfully');
     }
 
@@ -101,7 +132,9 @@ class RsvpController extends Controller
 
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
-  //   return view('pdf.report',compact('host','events','rsvp'));
+
+   return view('pdf.report',compact('host','events','rsvp'));
+
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
             $fileName = $rand . '.' . 'pdf' ;
@@ -111,7 +144,7 @@ class RsvpController extends Controller
 
 
             Mail::to($email)->send(new result($rand));
-//dd($rand);
+dd($rand);
 
             $events=eventBooking::where('user_id',$id)->where(function($q) {
                 $q->where('send',0)

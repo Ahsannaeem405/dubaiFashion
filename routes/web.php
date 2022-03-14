@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cls', function() {
     $run = Artisan::call('optimize:clear');
-
     Session::flush();
     return 'FINISHED';
 });
@@ -67,6 +66,13 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
 
         Route::get('rsvp/history/list/all', [App\Http\Controllers\RsvpController::class, 'rsvpList']);
     Route::get('/rsvp/view/list/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind2']);
+
+
+    Route::get('/rsvpReport', [App\Http\Controllers\RsvpController::class, 'rsvpReport'])->name('rsvpHistory');
+    Route::get('/eventReport', [App\Http\Controllers\RsvpController::class, 'eventReport'])->name('eventHistory');
+    Route::get('/event/report/{id}', [App\Http\Controllers\RsvpController::class, 'eventReportDetail']);
+    Route::get('/rsvpreport/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpReportDetail']);
+
 });
 
 Route::prefix('/counter')->middleware(['auth','counter'])->group(function () {

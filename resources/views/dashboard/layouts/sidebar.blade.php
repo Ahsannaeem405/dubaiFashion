@@ -30,6 +30,16 @@
             <li class="@yield('rsvpHistory')"><a href="{{url('admin/rsvp/history/list/all')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard"> Rsvp's List</span></a>
             </li>
 
+
+
+            <li class="@yield('eventReport')"><a href="{{route('eventHistory')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard"> Event report</span></a>
+            </li>
+
+            <li class="@yield('rsvpReport')"><a href="{{route('rsvpHistory')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard"> Rsvp's report</span></a>
+            </li>
+
+
+
             <li class="@yield('eventHistory')"><a href="{{url('admin/event/history')}}"><i class=" fa fa-plus"></i><span class="menu-title" data-i18n="Dashboard">Event History</span></a>
             </li>
             <li class="@yield('setting')"><a href="{{url('admin/setting')}}"><i class=" fa fa-cogs"></i><span class="menu-title" data-i18n="Dashboard">Setting</span></a>

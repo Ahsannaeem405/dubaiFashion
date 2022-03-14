@@ -214,9 +214,9 @@
 
             setTimeout(function() {
                 var countryCode = $('.selected-dial-code').text();
-            $('#phone').val("");
+            $('#phonecode').val("");
 
-            $('#phone').val( countryCode +' ');
+            $('#phonecode').val(countryCode +' ');
             }, 100);
         });
     });

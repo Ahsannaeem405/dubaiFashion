@@ -63,7 +63,7 @@ class UserController extends Controller
             $phone = \Session::put('phone',$request->phone);
         }
         else{
-            $phone = \Session::put('phone',$request->phone2);
+            $phone = \Session::put('phone',$request->phonecode.$request->phone2);
         }
         $phone = \Session::put('phonestep',true);
 
@@ -94,6 +94,7 @@ return redirect('/');
       $revps->linkedin=$request->linkedin[$i];
       $revps->category=$request->cat[$i];
       $revps->code=$request->code[$i];
+      $revps->company=$request->company[$i];
 
       if ($i==0)
       {   $revps->save();
