@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta  name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/style2.css')}}">
     <!-- Bootstrap CSS -->
@@ -176,7 +177,8 @@
         separateDialCode: true,
         initialCountry: "auto",
         geoIpLookup: function(callback) {
-            $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            $.get("https://ipinfo.io?token=88d8e99df13643", function() {}, "jsonp").always(function(resp) {
+
                 var countryCode = (resp && resp.country) ? resp.country : "";
                 callback(countryCode);
             });

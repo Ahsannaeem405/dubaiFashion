@@ -45,6 +45,11 @@
 
     <main>
         <div class="content-body">
+
+            <div class="col-lg-12">
+                <a href="{{url('admin/rsvp/history/list/all')}}"> <button class="btn btn-primary my-2">BACK</button></a>
+            </div>
+
             <section id="column-selectors">
                 <div class="row">
                     <div class="col-12">

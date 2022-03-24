@@ -33,7 +33,7 @@ class VerificationController extends Controller
             \Session::put('code',$code);
             \Session::put('phone',$request->phonecode.$request->phone);
             $receiverNumber = $request->phonecode.$request->phone;
-            $message = "$code is the OTP to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
+            $message = "<b style='font-weight: bold'>$code</b>";
 
 //            $msg=    \Http::
 //            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
@@ -43,7 +43,7 @@ class VerificationController extends Controller
 //                    'Body'=>$message,
 //                ]);
 
-            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$receiverNumber.'&message='.$message.'&sid=AD-AFWxd3&mtype=N&DR=Y');
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$receiverNumber.'&message='.$message.'&sid=AFWXD3&mtype=N&DR=Y');
 
             if($msg->successful()!=true)
             {
@@ -75,7 +75,7 @@ class VerificationController extends Controller
             $phone=  \Session::get('phone');
 
 
-            $message = "$code is the OTP to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
+            $message = "Here is your OTP $code to authorize your online registration for the Arab Fashion Week-Women's, hosted at d3 from 24-28 March 2022.";
 
 //            $msg=    \Http::
 //            withBasicAuth(env('TWELLO_KEY'),env('TWELLO_SECRET'))
@@ -85,7 +85,7 @@ class VerificationController extends Controller
 //                    'Body'=>$message,
 //                ]);
 
-            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$phone.'&message='.$message.'&sid=AD-AFWxd3&mtype=N&DR=Y');
+            $msg=    \Http::get('https://api.smscountry.com/SMSCwebservice_bulk.aspx?User=arabfashioncouncil&passwd=65934234&mobilenumber='.$phone.'&message='.$message.'&sid=AFWXD3&mtype=N&DR=Y');
 
 
             if($msg->successful()!=true)
@@ -107,7 +107,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-    // dd($code);
+        // dd($code);
         if ($code==$request->code)
         {
 

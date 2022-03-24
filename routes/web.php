@@ -53,10 +53,12 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
  //rsvp
     Route::get('/rsvp', [App\Http\Controllers\RsvpController::class, 'rsvp']);
     Route::get('/rsvp/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind']);
+    Route::post('/all/approve/{id}', [App\Http\Controllers\RsvpController::class, 'approveall']);
 
     Route::get('/rsvp/delete/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpDelete']);
     Route::any('/rsvp/{id}/{status}', [App\Http\Controllers\RsvpController::class, 'rsvpStatus']);
     Route::any('send/pdf/{id}/', [App\Http\Controllers\RsvpController::class, 'rsvpSend']);
+    Route::any('download/pdf/{id}/', [App\Http\Controllers\RsvpController::class, 'rsvpDownload']);
 
     //event history
     Route::get('/event/history', [App\Http\Controllers\EventController::class, 'eventHistory']);
@@ -65,7 +67,8 @@ Route::prefix('/admin')->middleware(['auth','admin'])->group(function () {
     //list
 
         Route::get('rsvp/history/list/all', [App\Http\Controllers\RsvpController::class, 'rsvpList']);
-    Route::get('/rsvp/view/list/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind2']);
+       Route::get('/rsvp/view/list/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpFind2']);
+       Route::get('resend/rsvp/{id}', [App\Http\Controllers\RsvpController::class, 'rsvpResend']);
 
 
     Route::get('/rsvpReport', [App\Http\Controllers\RsvpController::class, 'rsvpReport'])->name('rsvpHistory');

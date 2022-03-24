@@ -52,7 +52,7 @@
 
                                 </div>
                                 <input id="phone"  name="phone" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="tel" required>
-                                <input id="phonecode"  name="phonecode" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="text" required>
+                                <input id="phonecode"  name="phonecode" style="height: 38px;"  value="" id="inlineFormInputGroup" class="form-control" type="hidden" required>
                             </div>
                         </div>
 

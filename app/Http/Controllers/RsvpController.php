@@ -13,9 +13,16 @@ use PDF;
 class RsvpController extends Controller
 {
 
-    public function rsvpReport()
+    public function rsvpReport(Request $request)
     {
-        $rsvp=rsvp::all();
+        $search =  $request->input('q');
+        if($search==""){
+            $rsvp=rsvp::get();
+        }
+        else{
+            $rsvp=rsvp::where('category',$search)->get();
+        }
+
 
         return view('dashboard.rsvpReport.index',compact('rsvp'));
     }
@@ -42,23 +49,41 @@ class RsvpController extends Controller
     }
 
 
-    public function rsvp()
+    public function rsvp(Request $request)
     {
+        $search =  $request->input('q');
+        if($search==""){
         $rsvp=rsvp::whereHas('userEvent', function($q) {
                      $q->where('send',0)
                          ->whereIn('status',['pending','Approved']);
         })->where('parent',null)->get();
 
+    }
+    else{
+        $rsvp=rsvp::whereHas('userEvent', function($q) {
+            $q->where('send',0)
+                ->whereIn('status',['pending','Approved']);
+        })->where('parent',null)->where('category',$search)->get();
+
+    }
 
         return view('dashboard.rsvp.index',compact('rsvp'));
     }
-    public function rsvpList()
+    public function rsvpList(Request $request)
     {
+        $search =  $request->input('q');
+        if($search==""){
 
         $rsvp=rsvp::whereHas('userEvent', function($q) {
 
         })->where('parent',null)->get();
+        }
+        else{
 
+            $rsvp=rsvp::whereHas('userEvent', function($q) {
+
+            })->where('parent',null)->where('category',$search)->get();
+        }
 
         return view('dashboard.rsvpList.index',compact('rsvp'));
     }
@@ -74,6 +99,18 @@ class RsvpController extends Controller
 
         return view('dashboard.rsvp.rsvpEvent',compact('rsvp','events','travelling','id'));
     }
+
+    public function approveall(Request  $request,$id)
+    {
+        $rsvp=rsvp::find($id);
+
+        $events=eventBooking::where('user_id',$id)->where(function($q) {
+            $q->whereIn('status',['pending']);
+        })->update(['status'=>'Approved','seat'=>$request->seatname]);
+      return back()->with('success','Status updated successfully');
+
+    }
+
     public function rsvpFind2($id)
     {
         $rsvp=rsvp::find($id);
@@ -84,6 +121,45 @@ class RsvpController extends Controller
 
         return view('dashboard.rsvpList.rsvpEvent',compact('rsvp','events','travelling','id'));
     }
+
+    public function rsvpResend($id)
+    {
+
+        $rsvp=rsvp::find($id);
+        $events=eventBooking::where('user_id',$id)->where(function($q) {
+            $q->whereIn('status',['Approved']);
+        })->with('event')->get();
+        if (count($events)!=0)
+        {
+
+            $email=$rsvp->email;
+
+            $rand2 =  rand(00000,99999);
+            $idd =  ($id);
+
+            $host="$rsvp->id";
+            $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
+
+            //return view('pdf.report',compact('host','events','rsvp'));
+
+            $rand= rand(0, 99999999999999);
+            $path = 'pdf/';
+            $fileName = $rand . '.' . 'pdf' ;
+            $pdf->save($path  . $fileName);
+
+
+
+
+            Mail::to($email)->send(new result($rand));
+        }
+
+        return back()->with('success','Notification resend successfully');
+
+
+
+        return view('dashboard.rsvpList.rsvpEvent',compact('rsvp','events','travelling','id'));
+    }
+
     public function rsvpDelete(rsvp $id)
     {
 
@@ -133,7 +209,7 @@ class RsvpController extends Controller
             $host="$rsvp->id";
             $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
 
-   return view('pdf.report',compact('host','events','rsvp'));
+  //return view('pdf.report',compact('host','events','rsvp'));
 
             $rand= rand(0, 99999999999999);
             $path = 'pdf/';
@@ -144,7 +220,7 @@ class RsvpController extends Controller
 
 
             Mail::to($email)->send(new result($rand));
-dd($rand);
+
 
             $events=eventBooking::where('user_id',$id)->where(function($q) {
                 $q->where('send',0)
@@ -220,6 +296,31 @@ foreach ($rsvp as $rsvp)
 
 
         return back()->with('success','Notification send successfully');
+
+
+    }
+
+    public function rsvpDownload($id)
+    {
+        $rsvp=rsvp::find($id);
+        $events=eventBooking::where('user_id',$id)->where(function($q) {
+
+               $q ->whereIn('status',['Approved']);
+        })->with('event')->get();
+        //  dd($events);
+
+
+
+            $email=$rsvp->email;
+
+            $rand2 =  rand(00000,99999);
+            $idd =  ($id);
+
+            $host="$rsvp->id";
+            $pdf = \PDF::loadView('pdf.report',compact('host','events','rsvp'));
+        return $pdf->download(''.$rsvp->f_name.'ticket.pdf');
+          //  return view('pdf.report',compact('host','events','rsvp'));
+
 
 
     }

@@ -72,8 +72,8 @@
                             <option value="Press">Press</option>
                             <option value="Photographer">Photographer</option>
                             <option value="Celebrity">Celebrity or Influencer</option>
-                            <option value="Press">Guest</option>
-                            <option value="Press">Buyer</option>
+                            <option value="Guest">Guest</option>
+                            <option value="Buyer">Buyer</option>
 
                         </select><br>
 

@@ -7,7 +7,10 @@
 
         <h1 class="text-center">Scan QR code for {{$event->name}}</h1>
         <div class="row w-100 my-5 m-0">
-            <video class="m-auto" id="preview" style="border: 1px solid red;border-radius: 25px;width: 100%"></video>
+            <select name="" id="camera" class="form-control my-2">
+
+            </select>
+            <video playsinline controls="true" class="m-auto" id="preview" style="border: 1px solid red;border-radius: 25px;width: 100%"></video>
         </div>
 
     </div>
@@ -22,7 +25,7 @@
     </script>
     <script type="text/javascript">
         var user = 0;
-        let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
+        let scanner = new Instascan.Scanner({video: document.getElementById('preview'),mirror : false});
         scanner.addListener('scan', function (content) {
 
             var event = {{$event->id}};
@@ -51,7 +54,21 @@
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
-                scanner.start(cameras[0]);
+                var html;
+                for (var i=0 ; i < cameras.length;i++)
+                {
+
+                  html +=  `<option value="${i}">${cameras[i].name}</option>`;
+                }
+                $('#camera').append(html);
+                // if (typeof cameras[1]==='undefined')
+                // {
+                    scanner.start(cameras[0]);
+                // }
+                // else{
+                //     scanner.start(cameras[1]);
+                // }
+
             } else {
                 console.error('No cameras found.');
             }
@@ -60,6 +77,18 @@
         });
 
 
+        $('#camera').change(function () {
+            var val=$(this).val();
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[val]);
+
+                } else {
+                    console.error('No cameras found.');
+                }
+            })
+
+        })
 
 
 
