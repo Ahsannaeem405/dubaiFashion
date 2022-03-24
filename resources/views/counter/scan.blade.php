@@ -76,6 +76,15 @@
             console.error(e);
         });
 
+        let supports = navigator.mediaDevices.getSupportedConstraints();
+        if (supports["facingMode"]) {
+           alert('Not Support!');
+        } else {
+            let constraints = {
+                facingMode: { exact: "environment" }
+            }
+            myTrack.applyConstraints(constraints);
+        }
 
         $('#camera').change(function () {
             var val=$(this).val();
