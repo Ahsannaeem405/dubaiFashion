@@ -25,7 +25,9 @@
     </script>
     <script type="text/javascript">
         var user = 0;
-        let scanner = new Instascan.Scanner({ video:document.getElementById('preview') , facingMode: { exact: "environment" },mirror : false, });
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview')
+            ,mirror : false, });
+        scanner.facingMode='environment';
         scanner.addListener('scan', function (content) {
 
             var event = {{$event->id}};
@@ -52,7 +54,7 @@
             });
 
         });
-        Instascan.Camera.getCameras().then(function (cameras) {
+        Instascan.Camera.getCameras({ video: { facingMode: { exact: "environment" } } }).then(function (cameras) {
             if (cameras.length > 0) {
                 var html;
                 for (var i=0 ; i < cameras.length;i++)
