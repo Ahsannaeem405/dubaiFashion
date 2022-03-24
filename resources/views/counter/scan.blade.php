@@ -26,8 +26,10 @@
     <script type="text/javascript">
         var user = 0;
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview')
+
+              ,  facingMode: 'environment'
             ,mirror : false, });
-        scanner.facingMode='environment';
+       // scanner.facingMode='environment';
         scanner.addListener('scan', function (content) {
 
             var event = {{$event->id}};
@@ -54,7 +56,11 @@
             });
 
         });
-        Instascan.Camera.getCameras({ video: { facingMode: { exact: "environment" } } }).then(function (cameras) {
+        let constraints = {
+            facingMode: { exact: "environment" }
+        };
+
+        Instascan.Camera.getCameras(constraints).then(function (cameras) {
             if (cameras.length > 0) {
                 var html;
                 for (var i=0 ; i < cameras.length;i++)
