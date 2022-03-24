@@ -38,11 +38,11 @@
 
                 fps: 1,
                 qrbox: 250,
-                videoConstraints: {
-                    width: 450,
-                    height: 450,
-                    facingMode: 'environment',
-                },
+                // videoConstraints: {
+                //     width: 450,
+                //     height: 450,
+                //     facingMode: 'environment',
+                // },
 
 
 
