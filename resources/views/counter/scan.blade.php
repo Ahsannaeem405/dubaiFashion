@@ -3,6 +3,10 @@
 
 
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="{{asset('userSite/js/test.js')}}"></script>
+
+    <div style="width: 500px" id="reader"></div>
+
     <div class="container pt-5">
 
         <h1 class="text-center">Scan QR code for {{$event->name}}</h1>
@@ -20,7 +24,40 @@
 
 
 
-    <script>
+    <script type="text/javascript">
+
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+
+        function onScanSuccess(decodedText, decodedResult) {
+            // Handle on success condition with the decoded text or result.
+            console.log(`Scan result: ${decodedText}`, decodedResult);
+            alert(decodedResult.decodedText);
+           // html5QrcodeScanner.clear();
+            // ^ this will stop the scanner (video feed) and clear the scan area.
+        }
+
+        html5QrcodeScanner.render(onScanSuccess);
+
+        Html5Qrcode.getCameras().then(cameras => {
+
+         console.log(cameras);
+
+         Html5QrcodeScanner.start(cameras[1]);
+
+            /**
+             * devices would be an array of objects of type:
+             * { id: "id", label: "label" }
+             */
+            // if (devices && devices.length) {
+            //     var cameraId = devices[0].id;
+            //     alert(cameraId);
+            //     // .. use this to start scanning.
+            // }
+        }).catch(err => {
+            // handle err
+        });
 
     </script>
     <script type="text/javascript">
@@ -71,7 +108,7 @@
                 $('#camera').append(html);
                 // if (typeof cameras[1]==='undefined')
                 // {
-                    scanner.start(cameras[0]);
+                   // scanner.start(cameras[0]);
                 // }
                 // else{
                 //     scanner.start(cameras[1]);
