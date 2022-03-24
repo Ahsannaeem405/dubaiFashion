@@ -25,7 +25,7 @@
     </script>
     <script type="text/javascript">
         var user = 0;
-        let scanner = new Instascan.Scanner({video: document.getElementById('preview'),mirror : false,facingMode : { exact: "environment" }});
+        let scanner = new Instascan.Scanner({ video:document.getElementById('preview') , facingMode: { exact: "environment" },mirror : false, });
         scanner.addListener('scan', function (content) {
 
             var event = {{$event->id}};
@@ -76,16 +76,18 @@
             console.error(e);
         });
 
-        let supports = navigator.mediaDevices.getSupportedConstraints();
-        if (supports["facingMode"]) {
 
-           alert('Not Support!');
-        } else {
-            let constraints = {
-                facingMode: { exact: "environment" }
-            }
-            myTrack.applyConstraints(constraints);
-        }
+            // let constraints = {
+            //     facingMode: { exact: "environment" }
+            // }
+
+
+        // } else {
+        //     let constraints = {
+        //         facingMode: { exact: "environment" }
+        //     }
+        //     myTrack.applyConstraints(constraints);
+        // }
 
         $('#camera').change(function () {
             var val=$(this).val();
