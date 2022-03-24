@@ -25,7 +25,7 @@
     </script>
     <script type="text/javascript">
         var user = 0;
-        let scanner = new Instascan.Scanner({video: document.getElementById('preview'),mirror : false});
+        let scanner = new Instascan.Scanner({video: document.getElementById('preview'),mirror : false,facingMode : 'environment'});
         scanner.addListener('scan', function (content) {
 
             var event = {{$event->id}};
