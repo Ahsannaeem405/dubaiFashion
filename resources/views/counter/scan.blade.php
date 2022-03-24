@@ -78,6 +78,7 @@
 
         let supports = navigator.mediaDevices.getSupportedConstraints();
         if (supports["facingMode"]) {
+
            alert('Not Support!');
         } else {
             let constraints = {
