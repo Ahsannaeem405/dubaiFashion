@@ -9,7 +9,11 @@
 
     <div class="container pt-5">
         <h1 class="text-center">Scan QR code for {{$event->name}}</h1>
-        <div style="width: 100%" id="reader"></div>
+        <div class="row w-100 my-5 m-0">
+        <div class="col-lg-6 text-center m-auto">
+        <div class="" style="width: 100%" id="reader"></div>
+        </div>
+        </div>
 
 
         <div class="row w-100 my-5 m-0">
@@ -33,7 +37,7 @@
             "reader", {
 
                 fps: 1,
-                qrbox: 450,
+                qrbox: 250,
                 videoConstraints: {
                     width: 450,
                     height: 450,
