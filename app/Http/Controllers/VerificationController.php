@@ -19,7 +19,7 @@ class VerificationController extends Controller
     {
         \Session::put('phone',$request->phonecode.$request->phone);
 
-        \Session::put('verification',true);
+        \Session::put('step1',true);
         return redirect('/');
     }
     public function send(Request $request)
@@ -105,7 +105,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request){
         $code=\Session::get('code');
-        // dd($code);
+     //    dd($code);
         if ($code==$request->code)
         {
 

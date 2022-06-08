@@ -24,10 +24,15 @@ class UserController extends Controller
 //        })->toSql();
 //        dd($user);
 //\Session::flush();
+
+        $num = \Session::get('phone');
             $status = \Session::get('verification');
 
         $phone = \Session::get('phonestep');
-        $num = \Session::get('phone');
+        $step1 = \Session::get('step1');
+        $email = \Session::get('email');
+        $emailStep = \Session::get('emailStep');
+
         $submit = \Session::get('submitionstep');
         $date=Carbon::now();
         $search= \Session::get('array_data');
@@ -43,14 +48,22 @@ class UserController extends Controller
 
             return view('welcome',compact('num','heading'));
         }
-        elseif ($status == true) {
+        elseif ($step1 == true and $phone == true)
+        {
+//email write
+
+
+        }
+        elseif ($step1 == true) {
+
 
             return view('verify.phone',compact('num'));
         }
 
+
        // return view('welcome',compact('num','heading'));
 
-        return view('verify.index2');
+        return view('verify.index');
 
 
     }
