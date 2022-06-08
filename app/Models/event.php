@@ -34,4 +34,9 @@ class event extends Model
         return $this->hasMany(eventBooking::class,'event_id')->where('status','Approved');
     }
 
+    public function joinmember()
+    {
+        return $this->hasMany(eventBooking::class,'event_id')->where('join',1);
+    }
+
 }

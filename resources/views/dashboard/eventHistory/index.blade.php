@@ -58,6 +58,8 @@
                                                 <th>Event date</th>
                                                 <th>Event Time</th>
                                                 <th>Description</th>
+                                                <th>Joined members</th>
+                                                <th>Total members</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -71,6 +73,8 @@
                                                     <td>{{$event->start}}</td>
                                                     <td>{{Carbon\Carbon::parse($event->starttime)->format('h:i a')}} {{' - '}} {{Carbon\Carbon::parse($event->endtime)->format('h:i a')}}</td>
                                                     <td>{{$event->desc}}</td>
+                                                    <td>{{$event->joinmember_count}}</td>
+                                                    <td>{{count($event->members)}}</td>
 
                                                     <td>
                                                         <a href="{{url("admin/event/history/$event->id")}}">

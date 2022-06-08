@@ -25,8 +25,6 @@ class VerificationController extends Controller
     public function send(Request $request)
     {
 
-
-
         try {
 
             $code=rand(100000, 999999);

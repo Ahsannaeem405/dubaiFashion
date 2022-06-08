@@ -2,8 +2,9 @@
 @section('content')
 
 
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+{{--    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>--}}
     <script src="{{asset('userSite/js/test.js')}}"></script>
+{{--    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>--}}
 
 
 
@@ -11,7 +12,9 @@
         <h1 class="text-center">Scan QR code for {{$event->name}}</h1>
         <div class="row w-100 my-5 m-0">
         <div class="col-lg-6 text-center m-auto">
-        <div class="" style="width: 100%" id="reader"></div>
+            <div  id="reader" style="width: 100%"></div>
+{{--        <div class="" style="width: 100%" id="reader"></div>--}}
+
         </div>
         </div>
 
@@ -81,7 +84,11 @@
             // ^ this will stop the scanner (video feed) and clear the scan area.
         }
 
-        html5QrcodeScanner.render(onScanSuccess);
+
+        function onScanError(errorMessage) {
+      // alert(errorMessage);
+        }
+        html5QrcodeScanner.render(onScanSuccess,onScanError);
 
 
 

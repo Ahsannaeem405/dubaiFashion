@@ -93,7 +93,8 @@ if ($request->hasFile('image'))
 
 
     public function eventHistory(){
-        $events=event::all();
+        $events=event::withCount('joinmember')->get();
+
 return view('dashboard.eventHistory.index',compact('events'));
     }
 
